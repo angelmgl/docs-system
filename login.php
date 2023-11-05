@@ -6,7 +6,7 @@ session_start();
 // Si el usuario ya tiene una sesión iniciada y es admin redirige al dashboard
 if (isset($_SESSION['role'])) {
     if ($_SESSION['role'] == "superadmin") {
-        header("Location: " . BASE_URL . "/admin/dashboard.php");
+        header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } elseif ($_SESSION['role'] == "admin" || $_SESSION['role'] == "analyst") {
         header("Location: " . BASE_URL . "/business/dashboard.php");
@@ -20,10 +20,7 @@ if (isset($_SESSION['role'])) {
 
 <head>
     <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <?php include './components/meta.php' ?>
 </head>
 
 <body>

@@ -23,7 +23,7 @@ if ($user && password_verify($password, $user['password'])) {
     // Si es superusuario, se establece el rol y se redirige al dashboard de superadmin.
     if ($user['is_superuser']) {
         $_SESSION['role'] = 'superadmin';
-        header("Location: " . BASE_URL . "/admin/dashboard.php");
+        header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } else {
         // No es superusuario, buscamos su rol en la tabla de roles_businesses.
@@ -42,7 +42,7 @@ if ($user && password_verify($password, $user['password'])) {
         // Si el usuario tiene un rol asignado, establecemos el rol en la sesión.
         if ($roleRow) {
             $_SESSION['role'] = $roleRow['name'];
-            header("Location: " . BASE_URL . "/admin/dashboard.php");
+            header("Location: " . BASE_URL . "/business/dashboard.php");
             exit;
         } else {
             // El usuario no tiene un rol asignado, manejar según sea necesario.
