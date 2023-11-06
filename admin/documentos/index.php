@@ -13,7 +13,7 @@ if ($_SESSION['role'] !== 'superadmin') {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Dashboard</title>

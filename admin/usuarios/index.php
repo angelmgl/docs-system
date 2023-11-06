@@ -28,7 +28,7 @@ $mydb->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>Usuarios</title>
