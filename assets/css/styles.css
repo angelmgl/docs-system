@@ -346,7 +346,7 @@ body {
 }
 
 .custom-form .file-input #profile-picture-container.show,
-.custom-form .file-input #logo.show,
+.custom-form .file-input #logo-container.show,
 .custom-form .file-input input.show {
     display: block;
 }
