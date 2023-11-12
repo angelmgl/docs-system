@@ -27,6 +27,30 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
+
+$adminsAndAnalysts = [];
+
+// Preparar la consulta para obtener la lista de admins y analysts
+$usersStmt = $mydb->prepare("
+    SELECT u.id, u.full_name, u.username, u.email, r.name as role
+    FROM roles_businesses rb
+    INNER JOIN users u ON rb.user_id = u.id
+    INNER JOIN roles r ON rb.role_id = r.id
+    WHERE rb.business_id = ? AND (r.name = 'admin' OR r.name = 'analyst')
+");
+$usersStmt->bind_param("i", $business_id);
+
+// Ejecutar la consulta
+$usersStmt->execute();
+$usersResult = $usersStmt->get_result();
+
+if ($usersResult->num_rows > 0) {
+    while ($row = $usersResult->fetch_assoc()) {
+        $adminsAndAnalysts[] = $row;
+    }
+}
+
+$usersStmt->close();
 $mydb->close();
 
 // Si 'expiration_date' es null o no está definido, usamos la fecha actual. Si no, usamos su valor.
@@ -62,6 +86,11 @@ if ($business === null) {
                 echo $_SESSION['error'];
                 echo '</p>';
                 unset($_SESSION['error']);
+            } else if (isset($_SESSION['success'])) {
+                echo '<p class="success">';
+                echo $_SESSION['success'];
+                echo '</p>';
+                unset($_SESSION['success']);
             }
             ?>
             <form class="custom-form" action="./actions/update_business.php" method="POST" enctype="multipart/form-data">
@@ -73,6 +102,13 @@ if ($business === null) {
                         <label for="name">Nombre: <span class="required">*</span></label>
                         <input type="text" id="name" name="name" value="<?php echo $business['name']; ?>" required>
                     </div>
+
+                    <hr />
+
+                    <h2>Administradores</h2>
+
+                    <?php print_r($adminsAndAnalysts) ?>
+                    <a href="<?php echo BASE_URL ?>/admin/empresas/add-user.php?business_id=<?php echo $business_id ?>" class="btn btn-primary">Agregar nuevo</a>
                 </div>
 
                 <div class="manage-section">

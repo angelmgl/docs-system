@@ -1,7 +1,8 @@
 CREATE TABLE roles (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(50) NOT NULL UNIQUE
+    code VARCHAR(50) NOT NULL UNIQUE,
+    name VARCHAR(50) NOT NULL
 );
 
-INSERT INTO roles (name) 
-VALUES ('admin'), ('analyst');
+INSERT INTO roles (code, name) 
+VALUES ('admin', 'Administrador'), ('analyst', 'Analista');
