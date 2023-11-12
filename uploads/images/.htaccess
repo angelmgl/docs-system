@@ -1,0 +1,6 @@
+# Prevención de listado de directorios
+Options -Indexes
+
+# Permitir el acceso a todos los archivos y subdirectorios
+Order Allow,Deny
+Allow from all

@@ -1,4 +1,4 @@
-CREATE TABLE role_businesses (
+CREATE TABLE roles_businesses (
     role_id INT(11) UNSIGNED NOT NULL,
     business_id INT(11) UNSIGNED NOT NULL,
     user_id INT(11) UNSIGNED NOT NULL,

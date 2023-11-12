@@ -68,6 +68,12 @@ body {
     background: var(--off-white-dark);
 }
 
+.btn.disabled {
+    background: var(--off-white-dark) !important;
+    border-color: var(--gray-color);
+    cursor: not-allowed;
+}
+
 .error {
     background-color: var(--danger-color);
     color: var(--white-color);
