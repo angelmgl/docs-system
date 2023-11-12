@@ -36,7 +36,7 @@ $stmt = $mydb->prepare("
     WHERE id = ?
 ");
 
-$stmt->bind_param("ssiii", $name, $logo_path, $is_active, $logo, $business_id);
+$stmt->bind_param("ssisi", $name, $logo_path, $is_active, $expiration_date, $business_id);
 
 try {
     if ($stmt->execute()) {

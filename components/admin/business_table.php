@@ -4,6 +4,7 @@
             <th class="logo-column">Logo</th>
             <th class="id-column">ID</th>
             <th class="name-column">Empresa</th>
+            <th class="expiration-column">Fecha de expiración</th>
             <th class="status-column">Estado</th>
             <th class="actions-column">Acciones</th>
         </tr>
@@ -17,6 +18,12 @@
                 </td>
                 <td class="id-column"><?php echo $business["id"] ?></td>
                 <td class="name-column"><?php echo $business["name"] ?></td>
+                <td class="expiration-column">
+                    <?php
+                    $expiration_date = empty($business['expiration_date']) ? 'No establecido' : format_date($business['expiration_date']);
+                    echo $expiration_date;
+                    ?>
+                </td>
                 <td class="status-column">
                     <?php if ($business["is_active"]) { ?>
                         <span class="status active">Activo</span>
