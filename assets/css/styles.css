@@ -300,6 +300,7 @@ body {
 }
 
 .custom-form .text-input input,
+.custom-form .date-input input,
 .custom-form .file-input input,
 .custom-form .select-input select {
     display: block;
@@ -310,7 +311,8 @@ body {
     border-radius: 5px;
 }
 
-.custom-form #profile-picture-container {
+.custom-form #profile-picture-container,
+.custom-form #logo-container {
     margin: 10px 0;
     width: 100%;
     aspect-ratio: 1;
@@ -319,18 +321,21 @@ body {
     position: relative;
 }
 
-.custom-form #profile-picture-container .action {
+.custom-form #profile-picture-container .action,
+.custom-form #logo-container .action {
     position: absolute;
     top: 10px;
     right: 10px;
 }
 
 .custom-form .file-input #profile-picture-container,
+.custom-form .file-input #logo-container,
 .custom-form .file-input input {
     display: none;
 }
 
 .custom-form .file-input #profile-picture-container.show,
+.custom-form .file-input #logo.show,
 .custom-form .file-input input.show {
     display: block;
 }
@@ -345,6 +350,38 @@ body {
 
 .custom-form .change-password:hover {
     color: var(--primary-color-dark);
+}
+
+.custom-form .date-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.custom-form .date-field input {
+    width: 80%;
+}
+
+.custom-form .date-field button {
+    width: 18%;
+    padding: 9px 0;
+    text-align: center;
+    font-size: 16px;
+    background: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.custom-form .date-field button:hover {
+    background: var(--primary-color-dark);
+}
+
+.table-actions {
+    display: flex;
+    align-items: center;
 }
 
 .action {
@@ -498,4 +535,78 @@ body {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
     }
+}
+
+/* BUSINESS TABLE */
+
+.business-table {
+    width: 100%;
+}
+
+.business-table thead {
+    background: var(--primary-color);
+    color: var(--white-color);
+}
+
+.business-table th, .business-table td {
+    text-align: left;
+    padding: 5px 10px;
+}
+
+.business-table .logo {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+}
+
+.business-table tbody tr {
+    cursor: pointer;
+}
+
+.business-table tbody tr:nth-child(odd) {
+    background-color: var(--white-color);
+}
+
+.business-table tbody tr:nth-child(even) {
+    background-color: var(--off-white);
+}
+
+.business-table tbody tr:hover {
+    background: var(--off-white-dark);
+}
+
+.business-table .logo-column {
+    width: 50px;
+}
+
+.business-table .id-column {
+    width: 40px;
+}
+
+.business-table .name-column {
+    width: 400px;
+}
+
+.business-table .status-column {
+    width: 100px;
+}
+
+.business-table .actions-column {
+    width: 100px;
+}
+
+.business-table .status {
+    padding: 4px 10px;
+    border-radius: 4px;
+    color: var(--white-color);
+}
+
+.business-table .status.active {
+    background: var(--primary-color);
+}
+
+.business-table .status.inactive {
+    background: var(--danger-color);
 }

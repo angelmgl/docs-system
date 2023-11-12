@@ -31,7 +31,7 @@ try {
         $profile_picture_path = upload_photo($_FILES['profile_picture'], $upload_system_dir, $upload_url_dir);
     }
 } catch (Exception $e) {
-    handle_form_error($e->getMessage(), $_POST, "/admin/add-user.php");
+    handle_form_error($e->getMessage(), $_POST, "/admin/usuarios/add.php");
 }
 
 // Conexión a la base de datos y preparación de la consulta.

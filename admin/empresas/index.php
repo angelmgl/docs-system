@@ -1,6 +1,7 @@
 <?php
 
 require '../../config/config.php';
+require '../../helpers/business.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -53,15 +54,9 @@ $mydb->close();
 
         <?php if (empty($businesses)) { ?>
             <p>No hay resultados para esta búsqueda...</p>
-        <?php } else { ?>
-            <ul>
-                <?php
-                foreach ($businesses as $business) { ?>
-                    <li><?php echo $business["name"] ?></li>
-                <?php }
-                ?>
-            </ul>
-        <?php } ?>
+        <?php } else { 
+            include '../../components/admin/business_table.php';
+        } ?>
     </section>
 </body>
 
