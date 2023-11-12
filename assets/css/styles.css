@@ -36,6 +36,14 @@ body {
     padding-bottom: 70px;
 }
 
+.text-primary {
+    color: var(--primary-color);
+}
+
+.semibold {
+    font-weight: 600;
+}
+
 .btn {
     padding: 8px 20px;
     border: none;
@@ -45,6 +53,9 @@ body {
     text-decoration: none;
     border: 1px solid var(--gray-color);
     transition: all 0.4s;
+    font-size: 16px;
+    line-height: 1em;
+    font-family: 'Lato', sans-serif;
 }
 
 .btn.btn-primary {
@@ -609,4 +620,14 @@ body {
 
 .business-table .status.inactive {
     background: var(--danger-color);
+}
+
+/* REMOVE USER */
+
+.remove-actions {
+    margin-top: 60px;
+}
+
+.remove-actions form {
+    display: inline;
 }

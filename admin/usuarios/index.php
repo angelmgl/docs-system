@@ -3,14 +3,12 @@
 require '../../config/config.php';
 require '../../helpers/dates.php';
 require '../../helpers/users.php';
+require '../../helpers/roles.php';
 
 // iniciar sesión y verificar autorización
 session_start();
 
-if ($_SESSION['role'] !== 'superadmin') {
-    header("Location: " . BASE_URL . "/login.php");
-    exit;
-}
+verifyRole('superadmin');
 
 $sql = "SELECT * FROM users";
 $stmt = $mydb->prepare("SELECT * FROM users");

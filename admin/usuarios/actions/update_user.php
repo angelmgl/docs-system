@@ -6,10 +6,7 @@ require '../../../helpers/forms.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-if ($_SESSION['role'] !== 'superadmin') {
-    header("Location: " . BASE_URL . "/login.php");
-    exit;
-}
+
 
 // Recibe los datos del formulario.
 $user_id = $_POST['user_id']; // Asegúrate de enviar el ID del usuario desde el formulario.

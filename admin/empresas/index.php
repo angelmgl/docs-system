@@ -2,14 +2,12 @@
 
 require '../../config/config.php';
 require '../../helpers/business.php';
+require '../../helpers/roles.php';
 
 // iniciar sesión y verificar autorización
 session_start();
 
-if ($_SESSION['role'] !== 'superadmin') {
-    header("Location: " . BASE_URL . "/login.php");
-    exit;
-}
+verifyRole('superadmin');
 
 $sql = "SELECT * FROM businesses";
 $stmt = $mydb->prepare("SELECT * FROM businesses");
