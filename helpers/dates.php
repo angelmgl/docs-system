@@ -1,15 +1,19 @@
 <?php 
 
-function format_date($date) {
+function format_date($date, $show_time = true) {
     $d = new DateTime($date);
+
+    $pattern = $show_time
+        ? 'd \'de\' MMMM \'de\' Y \'a las\' HH:mm \'hs\''
+        : 'd \'de\' MMMM \'de\' Y';
 
     $formatter = new IntlDateFormatter(
         'es_ES',
         IntlDateFormatter::LONG,
-        IntlDateFormatter::SHORT,
+        $show_time ? IntlDateFormatter::SHORT : IntlDateFormatter::NONE,
         date_default_timezone_get(),
         IntlDateFormatter::GREGORIAN,
-        'd \'de\' MMMM \'de\' Y \'a las\' HH:mm \'hs\''
+        $pattern
     );
 
     return $formatter->format($d);

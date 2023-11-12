@@ -20,7 +20,7 @@
                 <td class="name-column"><?php echo $business["name"] ?></td>
                 <td class="expiration-column">
                     <?php
-                    $expiration_date = empty($business['expiration_date']) ? 'No establecido' : format_date($business['expiration_date']);
+                    $expiration_date = empty($business['expiration_date']) ? 'No establecido' : format_date($business['expiration_date'], false);
                     echo $expiration_date;
                     ?>
                 </td>
