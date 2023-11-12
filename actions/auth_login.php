@@ -1,6 +1,7 @@
 <?php
 
 require '../config/config.php';
+require '../helpers/users.php';
 session_start();
 
 $username = $_POST['username'];
@@ -23,6 +24,7 @@ if ($user && password_verify($password, $user['password'])) {
     // Si es superusuario, se establece el rol y se redirige al dashboard de superadmin.
     if ($user['is_superuser']) {
         $_SESSION['role'] = 'superadmin';
+        update_last_login($mydb, $user['id']);
         header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } else {
@@ -42,6 +44,7 @@ if ($user && password_verify($password, $user['password'])) {
         // Si el usuario tiene un rol asignado, establecemos el rol en la sesión.
         if ($roleRow) {
             $_SESSION['role'] = $roleRow['name'];
+            update_last_login($mydb, $user['id']);
             header("Location: " . BASE_URL . "/business/dashboard.php");
             exit;
         } else {
@@ -51,12 +54,6 @@ if ($user && password_verify($password, $user['password'])) {
             exit;
         }
     }
-
-    // Actualizar el campo last_login para el usuario que ha iniciado sesión.
-    $updateStmt = $mydb->prepare("UPDATE users SET last_login = NOW() WHERE id = ?");
-    $updateStmt->bind_param("i", $user['id']);
-    $updateStmt->execute();
-    $updateStmt->close();
 } else {
     // No se encontró el usuario o la contraseña no es correcta.
     $_SESSION['error'] = "Usuario o contraseña incorrectos.";
