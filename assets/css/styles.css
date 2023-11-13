@@ -631,3 +631,26 @@ body {
 .remove-actions form {
     display: inline;
 }
+
+/* ADMIN LIST */
+
+.admin-card {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.admin-picture {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+}
+.admin-picture, .admin-name, .admin-role {
+    margin-right: 10px;
+}
+.admin-actions {
+    display: flex;
+    align-items: center;
+}

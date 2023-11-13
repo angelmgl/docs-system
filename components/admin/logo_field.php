@@ -15,7 +15,7 @@ if(isset($business)) {
 ?>
 
 <div class="input-wrapper file-input">
-    <label for="logo">Foto de perfil:</label>
+    <label for="logo">Logo de la empresa:</label>
     <div id="logo-container" class="<?php echo $show_photo; ?>" style="<?php echo $default_background; ?>">
         <button type="button" id="delete-logo" class="action delete">
             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
