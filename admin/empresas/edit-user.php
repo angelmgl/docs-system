@@ -74,6 +74,7 @@ while ($row = $rolesResult->fetch_assoc()) {
 }
 
 $rolesStmt->close();
+$mydb->close();
 ?>
 
 <!DOCTYPE html>
@@ -106,7 +107,7 @@ $rolesStmt->close();
 
                 <div class="data-section">
                     <p>
-                        Estás a punto de editar el rol de <strong><?php echo $user["full_name"] ?></strong> en la la empresa: 
+                        Estás a punto de editar el rol de <strong><?php echo $user["full_name"] ?></strong> en la empresa: 
                         <strong><?php echo $business["name"] ?></strong>. Selecciona el rol que deseas que ocupe ahora:
                     </p>
                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>" />

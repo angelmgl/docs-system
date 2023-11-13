@@ -79,6 +79,16 @@ body {
     background: var(--off-white-dark);
 }
 
+.btn.btn-danger {
+    background: var(--danger-color);
+    color: var(--white-color);
+    border-color: var(--danger-color);
+}
+
+.btn.btn-danger:hover {
+    background: var(--danger-color-dark);
+}
+
 .btn.disabled {
     background: var(--off-white-dark) !important;
     border-color: var(--gray-color);
