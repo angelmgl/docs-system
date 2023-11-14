@@ -2,7 +2,7 @@
 
 require '../../config/config.php';
 require '../../helpers/business.php';
-require '../../helpers/roles.php';
+require '../../helpers/auth.php';
 require '../../helpers/dates.php';
 
 // iniciar sesión y verificar autorización

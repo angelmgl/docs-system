@@ -1,7 +1,7 @@
 <?php 
 
 require '../../../config/config.php';
-require '../../../helpers/roles.php';
+require '../../../helpers/auth.php';
 
 session_start();
 
