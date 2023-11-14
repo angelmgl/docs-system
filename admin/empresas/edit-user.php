@@ -7,7 +7,7 @@ require '../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $business_id = $_GET["business_id"];
 $user_id = $_GET["user_id"];
@@ -107,7 +107,7 @@ $mydb->close();
 
                 <div class="data-section">
                     <p>
-                        Estás a punto de editar el rol de <strong><?php echo $user["full_name"] ?></strong> en la empresa: 
+                        Estás a punto de editar el rol de <strong><?php echo $user["full_name"] ?></strong> en la empresa:
                         <strong><?php echo $business["name"] ?></strong>. Selecciona el rol que deseas que ocupe ahora:
                     </p>
                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>" />
@@ -123,10 +123,7 @@ $mydb->close();
                             <label for="role_id">Seleccionar rol:</label>
                             <select id="role_id" name="role_id">
                                 <?php foreach ($roles as $role) { ?>
-                                    <option 
-                                        value="<?php echo $role["id"] ?>" 
-                                        <?php echo $role["id"] == $user["role_id"] ? "selected" : "" ?>
-                                    >
+                                    <option value="<?php echo $role["id"] ?>" <?php echo $role["id"] == $user["role_id"] ? "selected" : "" ?>>
                                         <?php echo $role["name"] ?>
                                     </option>
                                 <?php } ?>

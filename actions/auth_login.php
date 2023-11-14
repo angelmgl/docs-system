@@ -30,7 +30,7 @@ if ($user && password_verify($password, $user['password'])) {
     } else {
         // No es superusuario, buscamos su rol en la tabla de roles_businesses.
         $roleStmt = $mydb->prepare("
-            SELECT r.name 
+            SELECT r.code 
             FROM roles_businesses rb
             INNER JOIN roles r ON rb.role_id = r.id
             WHERE rb.user_id = ?
@@ -43,9 +43,9 @@ if ($user && password_verify($password, $user['password'])) {
 
         // Si el usuario tiene un rol asignado, establecemos el rol en la sesión.
         if ($roleRow) {
-            $_SESSION['role'] = $roleRow['name'];
+            $_SESSION['role'] = $roleRow['code'];
             update_last_login($mydb, $user['id']);
-            header("Location: " . BASE_URL . "/business/dashboard.php");
+            header("Location: " . BASE_URL . "/business/dashboard");
             exit;
         } else {
             // El usuario no tiene un rol asignado, manejar según sea necesario.

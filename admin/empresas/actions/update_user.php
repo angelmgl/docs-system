@@ -7,7 +7,7 @@ require '../../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 // Recibe los datos del formulario.
 $business_id = $_POST["business_id"];

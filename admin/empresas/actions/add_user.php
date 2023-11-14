@@ -7,7 +7,7 @@ require '../../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 // Recibe los datos del formulario.
 $business_id = $_POST["business_id"];
@@ -24,7 +24,7 @@ try {
         // Cerrar la sentencia y la conexión antes de redirigir
         $stmt->close();
         $mydb->close();
-    
+
         header("Location: " . BASE_URL . "/admin/empresas/edit.php?id=" . $business_id);
         exit;
     } else {

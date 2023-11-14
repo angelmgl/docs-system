@@ -8,7 +8,7 @@ $title = "Eliminar usuario";
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $username = $_GET["username"];
 
@@ -51,7 +51,7 @@ if ($user === null) {
 
         <p>
             ¡Atención! Eliminar un usuario es una acción irreversible. Si no estás completamente
-            seguro, considera desactivarlo para que ya no pueda usar su cuenta temporalmente. Puedes 
+            seguro, considera desactivarlo para que ya no pueda usar su cuenta temporalmente. Puedes
             <a href="<?php echo BASE_URL ?>/admin/usuarios/edit.php?username=<?php echo $user["username"]; ?>" class="semibold text-primary">
                 desactivarlo aquí.
             </a>

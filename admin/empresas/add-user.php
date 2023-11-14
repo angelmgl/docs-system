@@ -7,7 +7,7 @@ require '../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $business_id = $_GET["business_id"];
 

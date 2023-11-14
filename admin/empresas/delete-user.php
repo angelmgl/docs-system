@@ -7,7 +7,7 @@ require '../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $business_id = $_GET["business_id"];
 $user_id = $_GET["user_id"];
@@ -96,7 +96,7 @@ $mydb->close();
 
                 <div class="data-section">
                     <p>
-                        Estás a punto de eliminar a <strong><?php echo $user["full_name"] ?></strong> de la empresa: 
+                        Estás a punto de eliminar a <strong><?php echo $user["full_name"] ?></strong> de la empresa:
                         <strong><?php echo $business["name"] ?></strong>. Confirma esta acción para continuar:
                     </p>
                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>" />

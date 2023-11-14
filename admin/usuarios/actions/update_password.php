@@ -7,7 +7,7 @@ require '../../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 // Recibe los datos del formulario.
 $user_id = $_POST['user_id']; // Asegúrate de enviar el ID del usuario desde el formulario.

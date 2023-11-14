@@ -8,7 +8,7 @@ require '../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $username = $_GET["username"];
 
@@ -53,7 +53,7 @@ if ($user === null) {
         </div>
 
         <section>
-        <?php
+            <?php
             if (isset($_SESSION['error'])) {
                 echo '<p class="error">';
                 echo $_SESSION['error'];
@@ -96,8 +96,8 @@ if ($user === null) {
                     <?php include '../../components/admin/profile_picture_field.php' ?>
 
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Usuario">
-                    
-                    <a href="<?php echo BASE_URL . "/admin/usuarios/password.php?username=" . $user['username']?>" class="change-password">Cambiar contraseña</a>
+
+                    <a href="<?php echo BASE_URL . "/admin/usuarios/password.php?username=" . $user['username'] ?>" class="change-password">Cambiar contraseña</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>

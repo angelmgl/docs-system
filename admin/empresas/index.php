@@ -8,7 +8,7 @@ require '../../helpers/dates.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $sql = "SELECT * FROM businesses";
 $stmt = $mydb->prepare("SELECT * FROM businesses");
@@ -53,7 +53,7 @@ $mydb->close();
 
         <?php if (empty($businesses)) { ?>
             <p>No hay resultados para esta búsqueda...</p>
-        <?php } else { 
+        <?php } else {
             include '../../components/admin/business_table.php';
         } ?>
     </section>

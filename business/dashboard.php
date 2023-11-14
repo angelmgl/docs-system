@@ -1,1 +1,0 @@
-<h1>Bienvenido al Business Admin</h1>

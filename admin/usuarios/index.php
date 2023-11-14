@@ -8,7 +8,7 @@ require '../../helpers/roles.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $sql = "SELECT * FROM users";
 $stmt = $mydb->prepare("SELECT * FROM users");

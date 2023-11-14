@@ -7,7 +7,7 @@ $title = "Eliminar empresa";
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $business_id = $_GET["id"];
 

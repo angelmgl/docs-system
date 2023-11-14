@@ -7,7 +7,7 @@ $title = "Cambiar contraseña";
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRole('superadmin');
+verifyRoles(['superadmin']);
 
 $username = $_GET["username"];
 
@@ -72,7 +72,7 @@ if ($user === null) {
                     </div>
 
                     <label class="cursor-pointer" for="show-password">
-                        <input type="checkbox" id="show-password"> 
+                        <input type="checkbox" id="show-password">
                         Mostrar contraseña
                     </label>
 
