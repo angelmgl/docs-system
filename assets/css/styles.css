@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 :root {
@@ -55,7 +55,7 @@ body {
     transition: all 0.4s;
     font-size: 16px;
     line-height: 1em;
-    font-family: 'Lato', sans-serif;
+    font-family: "Lato", sans-serif;
 }
 
 .btn.btn-primary {
@@ -144,7 +144,8 @@ body {
     background: var(--primary-color);
 }
 
-#admin-header .container, #admin-header .container nav {
+#admin-header .container,
+#admin-header .container nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -569,7 +570,8 @@ body {
     color: var(--white-color);
 }
 
-.business-table th, .business-table td {
+.business-table th,
+.business-table td {
     text-align: left;
     padding: 5px 10px;
 }
@@ -657,10 +659,57 @@ body {
     background-size: cover;
     background-position: center center;
 }
-.admin-picture, .admin-name, .admin-role {
+.admin-picture,
+.admin-name,
+.admin-role {
     margin-right: 10px;
 }
 .admin-actions {
     display: flex;
     align-items: center;
+}
+
+/* WELCOME PAGE */
+
+#welcome-page {
+    height: 100px;
+}
+
+#welcome-page > h1,
+#welcome-page > p {
+    text-align: center;
+}
+
+#welcome-page .business-list {
+    max-width: 600px;
+    margin: 60px auto;
+}
+
+#welcome-page .business-card {
+    padding: 10px;
+    margin-bottom: 20px;
+    background: var(--off-white);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#welcome-page .business-logo {
+    height: 60px;
+    width: 60px;
+    margin-right: 20px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+}
+
+#welcome-page .business-card h2,
+#welcome-page .business-card p {
+    margin: 5px 0;
+}
+
+#welcome-page .business-card form {
+    margin-left: auto;
+    margin-top: 15px;
 }

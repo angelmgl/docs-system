@@ -1,3 +1,8 @@
+<?php
+
+
+
+?>
 <header id="admin-header">
     <div class="container px">
         <span class="app-name">SISTEMA</span>
@@ -7,6 +12,7 @@
             <a class="nav-link" href="<?php echo BASE_URL . "/business/usuarios" ?>">Usuarios</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/documentos" ?>">Documentos</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/ajustes" ?>">Ajustes</a>
+            <a class="nav-link" href="<?php echo BASE_URL . "/business/welcome" ?>">Cambiar empresa</a>
             <form action="<?php echo BASE_URL ?>/actions/auth_logout.php" method="post">
                 <button class="nav-link" type="submit" name="logout">Cerrar sesión</button>
             </form>

@@ -8,7 +8,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Preparar la consulta para obtener el usuario de la base de datos.
-$stmt = $mydb->prepare("SELECT id, password, is_superuser FROM users WHERE username = ?");
+$stmt = $mydb->prepare("SELECT id, full_name, password, is_superuser FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 
@@ -20,6 +20,7 @@ if ($user && password_verify($password, $user['password'])) {
     // La contraseña es correcta y el usuario existe.
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $username;
+    $_SESSION['full_name'] = $user['full_name'];
 
     // Si es superusuario, se establece el rol y se redirige al dashboard de superadmin.
     if ($user['is_superuser']) {
@@ -28,31 +29,10 @@ if ($user && password_verify($password, $user['password'])) {
         header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } else {
-        // No es superusuario, buscamos su rol en la tabla de roles_businesses.
-        $roleStmt = $mydb->prepare("
-            SELECT r.code 
-            FROM roles_businesses rb
-            INNER JOIN roles r ON rb.role_id = r.id
-            WHERE rb.user_id = ?
-            LIMIT 1
-        ");
-        $roleStmt->bind_param("i", $user['id']);
-        $roleStmt->execute();
-        $roleResult = $roleStmt->get_result();
-        $roleRow = $roleResult->fetch_assoc();
-
-        // Si el usuario tiene un rol asignado, establecemos el rol en la sesión.
-        if ($roleRow) {
-            $_SESSION['role'] = $roleRow['code'];
-            update_last_login($mydb, $user['id']);
-            header("Location: " . BASE_URL . "/business/dashboard");
-            exit;
-        } else {
-            // El usuario no tiene un rol asignado, manejar según sea necesario.
-            $_SESSION['error'] = "El usuario no pertenece a ningún negocio.";
-            header("Location: " . BASE_URL . "/login.php");
-            exit;
-        }
+        // Si no es superusuario, redirigimos al Welcome para que seleccione una empresa
+        update_last_login($mydb, $user['id']);
+        header("Location: " . BASE_URL . "/business/welcome");
+        exit;
     }
 } else {
     // No se encontró el usuario o la contraseña no es correcta.

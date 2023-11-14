@@ -21,3 +21,4 @@ define('MAIL_HOST', 'mail.xxxxx.net');
 define('MAIL_USERNAME', 'my@xxxxx.net');
 define('MAIL_PASSWORD', 'xxxxx');
 define('MAIL_FROM', 'my@xxxxx.net');
+define('APP_NAME', 'Sistema');

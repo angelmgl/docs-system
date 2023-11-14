@@ -19,11 +19,11 @@ verifyRoles(['admin', 'analyst']);
 </head>
 
 <body>
-    <?php include '../../components/admin/header.php' ?>
+    <?php include '../../components/business/header.php' ?>
     <section class="container py px">
         <h1>Bienvenido al App Admin</h1>
         <p>
-            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] ?>
+            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] . " - " . $_SESSION['current_business'] ?>
         </p>
     </section>
 </body>
