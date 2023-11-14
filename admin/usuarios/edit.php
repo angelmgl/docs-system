@@ -40,7 +40,7 @@ if ($user === null) {
 <html lang="es">
 
 <head>
-    <title>Agregar usuario</title>
+    <title>Editar usuario</title>
     <?php include '../../components/meta.php'; ?>
 </head>
 
@@ -48,17 +48,22 @@ if ($user === null) {
     <?php include '../../components/admin/header.php'; ?>
     <main class="container py px">
         <div class="admin-bar">
-            <h1>Agregar usuario</h1>
+            <h1>Editar usuario</h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/usuarios">Regresar</a>
         </div>
 
         <section>
-            <?php
+        <?php
             if (isset($_SESSION['error'])) {
                 echo '<p class="error">';
                 echo $_SESSION['error'];
                 echo '</p>';
                 unset($_SESSION['error']);
+            } else if (isset($_SESSION['success'])) {
+                echo '<p class="success">';
+                echo $_SESSION['success'];
+                echo '</p>';
+                unset($_SESSION['success']);
             }
             ?>
             <form class="custom-form" action="./actions/update_user.php" method="POST" enctype="multipart/form-data">
@@ -91,6 +96,8 @@ if ($user === null) {
                     <?php include '../../components/admin/profile_picture_field.php' ?>
 
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Usuario">
+                    
+                    <a href="<?php echo BASE_URL . "/admin/usuarios/password.php?username=" . $user['username']?>" class="change-password">Cambiar contraseña</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
