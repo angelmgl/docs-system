@@ -6,7 +6,7 @@ require '../../helpers/auth.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['admin', 'analyst']);
+verifyRoles(['super']);
 
 ?>
 
@@ -19,12 +19,9 @@ verifyRoles(['admin', 'analyst']);
 </head>
 
 <body>
-    <?php include '../../components/business/header.php' ?>
+    <?php include '../../components/admin/header.php' ?>
     <section class="container py px">
-        <h1>Bienvenido al App Business</h1>
-        <p>
-            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] . " - " . $_SESSION['business_id'] ?>
-        </p>
+        <h1>Ajustes de la app</h1>
     </section>
 </body>
 

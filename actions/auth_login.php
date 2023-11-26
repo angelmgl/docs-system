@@ -8,7 +8,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Preparar la consulta para obtener el usuario de la base de datos.
-$stmt = $mydb->prepare("SELECT id, full_name, password, role, business_id FROM users WHERE username = ?");
+$stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 
@@ -23,6 +23,7 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['full_name'] = $user['full_name'];
     $_SESSION['business_id'] = $user['business_id'];
     $_SESSION['role'] = $user['role'];
+    $_SESSION['profile_picture'] = $user['profile_picture'];
 
     update_last_login($mydb, $user['id']);
 

@@ -1,11 +1,11 @@
 * {
     box-sizing: border-box;
+    font-family: "Lato", sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
-    font-family: "Lato", sans-serif;
 }
 
 :root {
@@ -669,46 +669,48 @@ body {
     align-items: center;
 }
 
-/* WELCOME PAGE */
+/* MY PROFILE DROPDOWN */
 
-#welcome-page {
-    height: 100px;
-}
-
-#welcome-page > h1,
-#welcome-page > p {
-    text-align: center;
-}
-
-#welcome-page .business-list {
-    max-width: 600px;
-    margin: 60px auto;
-}
-
-#welcome-page .business-card {
-    padding: 10px;
-    margin-bottom: 20px;
-    background: var(--off-white);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-}
-
-#welcome-page .business-logo {
-    height: 60px;
-    width: 60px;
-    margin-right: 20px;
+.profile-btn {
+    height: 40px;
+    width: 40px;
+    position: relative;
     border-radius: 50%;
     background-size: cover;
     background-position: center center;
+    cursor: pointer;
+    margin-left: 20px;
 }
 
-#welcome-page .business-card h2,
-#welcome-page .business-card p {
-    margin: 5px 0;
+.profile-nav {
+    display: none;
+    position: absolute;
+    bottom: -100px;
+    right: 0;
+    width: 200px;
+    padding: 0 15px;
+    border-radius: 7px;
+    background-color: #fff;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
 
-#welcome-page .business-card form {
-    margin-left: auto;
+.profile-nav.open {
+    display: block;
+}
+
+.profile-link {
+    display: block;
+    font-size: 16px;
+    border: none;
+    background: transparent;
+    margin: 15px 0;
+    padding: 0;
+    color: var(--primary-color);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.profile-link:hover {
+    color: var(--danger-color-dark);
 }
