@@ -576,7 +576,7 @@ body {
     padding: 5px 10px;
 }
 
-.business-table .logo {
+.logo {
     height: 50px;
     width: 50px;
     border-radius: 50%;
@@ -713,4 +713,38 @@ body {
 
 .profile-link:hover {
     color: var(--danger-color-dark);
+}
+
+/* MI PERFIL */
+
+.my-business-card {
+    display: flex;
+    align-items: center;
+    background: var(--off-white);
+    border-radius: 7px;
+    padding: 10px;
+}
+
+.my-business-card H2 {
+    margin: 8px;
+}
+
+.my-business-content {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.my-business-name {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.my-business-role {
+    margin: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    color: var(--gray-color);
 }
