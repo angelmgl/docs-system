@@ -39,12 +39,9 @@ $user = null;
 
 // preparar la consulta
 $userStmt = $mydb->prepare("
-    SELECT u.*, rb.role_id
-    FROM users u
-    LEFT JOIN roles_businesses rb ON u.id = rb.user_id AND rb.business_id = ?
-    WHERE u.id = ?
+    SELECT * FROM users WHERE id = ? AND business_id = ?
 ");
-$userStmt->bind_param("ii", $business_id, $user_id);
+$userStmt->bind_param("ii", $user_id, $business_id);
 
 // ejecutar la consulta
 $userStmt->execute();
@@ -63,17 +60,6 @@ if ($user === null) {
     exit;
 }
 
-// Consulta para obtener todos los roles
-$roles = [];
-$rolesStmt = $mydb->prepare("SELECT * FROM roles");
-$rolesStmt->execute();
-$rolesResult = $rolesStmt->get_result();
-
-while ($row = $rolesResult->fetch_assoc()) {
-    $roles[] = $row;
-}
-
-$rolesStmt->close();
 $mydb->close();
 ?>
 
@@ -120,13 +106,10 @@ $mydb->close();
                         </div>
 
                         <div class="input-wrapper select-input">
-                            <label for="role_id">Seleccionar rol:</label>
-                            <select id="role_id" name="role_id">
-                                <?php foreach ($roles as $role) { ?>
-                                    <option value="<?php echo $role["id"] ?>" <?php echo $role["id"] == $user["role_id"] ? "selected" : "" ?>>
-                                        <?php echo $role["name"] ?>
-                                    </option>
-                                <?php } ?>
+                            <label for="role">Seleccionar rol:</label>
+                            <select id="role" name="role">
+                                <option value="admin" <?php echo $user["role"] == "admin" ? "selected" : "" ?>>Administrador</option>
+                                <option value="analyst" <?php echo $user["role"] == "analyst" ? "selected" : "" ?>>Analista</option>
                             </select>
                         </div>
                     </div>

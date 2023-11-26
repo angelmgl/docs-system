@@ -39,10 +39,7 @@ $user = null;
 
 // preparar la consulta
 $userStmt = $mydb->prepare("
-    SELECT u.*, rb.role_id
-    FROM users u
-    LEFT JOIN roles_businesses rb ON u.id = rb.user_id AND rb.business_id = ?
-    WHERE u.id = ?
+    SELECT * FROM users WHERE business_id = ? AND id = ?
 ");
 $userStmt->bind_param("ii", $business_id, $user_id);
 
@@ -100,7 +97,6 @@ $mydb->close();
                         <strong><?php echo $business["name"] ?></strong>. Confirma esta acción para continuar:
                     </p>
                     <input type="hidden" name="user_id" value="<?php echo $user_id ?>" />
-                    <input type="hidden" name="business_id" value="<?php echo $business_id ?>" />
 
                     <div class="grid cols-2">
                         <div class="input-wrapper text-input">

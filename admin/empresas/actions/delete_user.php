@@ -10,15 +10,15 @@ session_start();
 verifyRoles(['super']);
 
 // Recibe los datos del formulario.
-$business_id = $_POST["business_id"];
 $user_id = $_POST["user_id"];
-$role_id = $_POST["role_id"];
+$business_id = $_POST["business_id"];
 
 $stmt = $mydb->prepare("
-    DELETE FROM roles_businesses
-    WHERE business_id = ? AND user_id = ?;
+    UPDATE users
+    SET business_id = NULL
+    WHERE id = ?
 ");
-$stmt->bind_param("ii", $business_id, $user_id);
+$stmt->bind_param("i", $user_id);
 
 
 try {

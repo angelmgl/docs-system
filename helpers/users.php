@@ -31,3 +31,17 @@ function update_last_login($mydb, $id)
     $updateStmt->execute();
     $updateStmt->close();
 }
+
+function get_role($user) 
+{
+    $role = $user["role"];
+
+    switch ($role) {
+        case 'super':
+            return "Super Administrador";
+        case 'admin':
+            return "Administrador";
+        case 'analyst':
+            return "Analista";
+    }
+}

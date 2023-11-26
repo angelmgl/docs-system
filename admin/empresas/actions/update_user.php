@@ -12,14 +12,14 @@ verifyRoles(['super']);
 // Recibe los datos del formulario.
 $business_id = $_POST["business_id"];
 $user_id = $_POST["user_id"];
-$role_id = $_POST["role_id"];
+$role = $_POST["role"];
 
 $stmt = $mydb->prepare("
-UPDATE roles_businesses
-SET role_id = ?
-WHERE business_id = ? AND user_id = ?;
+UPDATE users
+SET role = ?
+WHERE business_id = ? AND id = ?;
 ");
-$stmt->bind_param("iii", $role_id, $business_id, $user_id);
+$stmt->bind_param("sii", $role, $business_id, $user_id);
 
 try {
     if ($stmt->execute()) {
