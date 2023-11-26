@@ -14,6 +14,8 @@ $full_name = $_POST['full_name'];
 $email = $_POST['email'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $username = $_POST['username'];
+$role = $_POST['role'];
+$business_id = $_POST['business_id'];
 $is_active = isset($_POST['is_active']) ? 1 : 0;
 
 
@@ -34,11 +36,11 @@ try {
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    INSERT INTO users (email, password, full_name, username, profile_picture, is_active) 
-    VALUES (?, ?, ?, ?, ?, ?)
+    INSERT INTO users (email, password, full_name, username, profile_picture, role, business_id, is_active) 
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
 ");
 
-$stmt->bind_param("sssssi", $email, $password, $full_name, $username, $profile_picture_path, $is_active);
+$stmt->bind_param("ssssssii", $email, $password, $full_name, $username, $profile_picture_path, $role, $business_id, $is_active);
 
 try {
     // Intenta ejecutar la consulta

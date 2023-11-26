@@ -6,8 +6,18 @@ require '../../helpers/auth.php';
 
 // iniciar sesión y verificar autorización
 session_start();
-
 verifyRoles(['super']);
+
+$stmt = $mydb->prepare("SELECT id, name FROM businesses WHERE is_active = TRUE");
+$stmt->execute();
+
+$result = $stmt->get_result();
+$businesses = [];
+while ($row = $result->fetch_assoc()) {
+    $businesses[] = $row;
+}
+
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -71,6 +81,26 @@ verifyRoles(['super']);
                     <div class="input-wrapper checkbox-input">
                         <label for="is_active">Activo:</label>
                         <input type="checkbox" id="is_active" name="is_active" checked>
+                    </div>
+
+                    <div class="input-wrapper select-input">
+                        <label for="role">Seleccionar rol:</label>
+                        <select id="role" name="role" required>
+                            <option value="" selected disabled>Selecciona...</option>
+                            <option value="analyst">Analista</option>
+                            <option value="admin">Administrador</option>
+                            <option value="super">Super Administrador</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper select-input">
+                        <label for="business_id">Seleccionar empresa:</label>
+                        <select id="business_id" name="business_id">
+                            <option value="" selected disabled>Selecciona...</option>
+                            <?php foreach ($businesses as $business) { ?>
+                                <option value="<?php echo $business["id"] ?>"><?php echo $business["name"] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <?php include '../../components/admin/profile_picture_field.php' ?>
