@@ -16,6 +16,8 @@ $full_name = $_POST['full_name'];
 $username = $_POST['username'];
 $is_active = isset($_POST['is_active']) ? 1 : 0;
 $old_photo = $_POST['old_photo'];
+$role = $_POST['role'];
+$business_id = $_POST['business_id'];
 
 $upload_system_dir = "../../../uploads/users/";
 $upload_url_dir = "/uploads/users/";
@@ -33,11 +35,11 @@ $profile_picture_path = $profile_picture_path ? $profile_picture_path : $old_pho
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    UPDATE users SET email = ?, full_name = ?, username = ?, profile_picture = ?, is_active = ?
+    UPDATE users SET email = ?, full_name = ?, username = ?, profile_picture = ?, role = ?, business_id = ?, is_active = ?
     WHERE id = ?
 ");
 
-$stmt->bind_param("ssssii", $email, $full_name, $username, $profile_picture_path, $is_active, $user_id);
+$stmt->bind_param("sssssiii", $email, $full_name, $username, $profile_picture_path, $role, $business_id, $is_active, $user_id);
 
 try {
     if ($stmt->execute()) {

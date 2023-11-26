@@ -27,6 +27,18 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
+
+// traer todas las empresas
+$bstmt = $mydb->prepare("SELECT id, name FROM businesses WHERE is_active = TRUE");
+$bstmt->execute();
+
+$result = $bstmt->get_result();
+$businesses = [];
+while ($row = $result->fetch_assoc()) {
+    $businesses[] = $row;
+}
+
+$bstmt->close();
 $mydb->close();
 
 // Si no se encontró al usuario, redirige a la página de lista de usuarios.
@@ -91,6 +103,24 @@ if ($user === null) {
                     <div class="input-wrapper checkbox-input">
                         <label for="is_active">Activo:</label>
                         <input type="checkbox" id="is_active" name="is_active" <?php echo ($user['is_active'] == 1) ? 'checked' : ''; ?>>
+                    </div>
+
+                    <div class="input-wrapper select-input">
+                        <label for="role">Seleccionar rol:</label>
+                        <select id="role" name="role" required>
+                            <option value="analyst" <?php echo $user['role'] === 'analyst' ? 'selected' : '' ?>>Analista</option>
+                            <option value="admin" <?php echo $user['role'] === 'admin' ? 'selected' : '' ?>>Administrador</option>
+                            <option value="super" <?php echo $user['role'] === 'super' ? 'selected' : '' ?>>Super Administrador</option>
+                        </select>
+                    </div>
+
+                    <div class="input-wrapper select-input">
+                        <label for="business_id">Seleccionar empresa:</label>
+                        <select id="business_id" name="business_id">
+                            <?php foreach ($businesses as $business) { ?>
+                                <option value="<?php echo $business["id"] ?>" <?php echo $user['business_id'] === $business['id'] ? 'selected' : '' ?>><?php echo $business["name"] ?></option>
+                            <?php } ?>
+                        </select>
                     </div>
 
                     <?php include '../../components/admin/profile_picture_field.php' ?>
