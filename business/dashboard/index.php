@@ -23,7 +23,7 @@ verifyRoles(['admin', 'analyst']);
     <section class="container py px">
         <h1>Bienvenido al App Admin</h1>
         <p>
-            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] . " - " . $_SESSION['current_business'] ?>
+            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] . " - " . $_SESSION['business_id'] ?>
         </p>
     </section>
 </body>

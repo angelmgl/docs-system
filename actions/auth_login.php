@@ -29,13 +29,12 @@ if ($user && password_verify($password, $user['password'])) {
     $stmt->close();
     $mydb->close();
 
-
     // Si es superadmin, se establece el rol y se redirige al dashboard de superadmin.
     if ($user['role'] === 'super') {
         header("Location: " . BASE_URL . "/admin/dashboard");
     } else if (!!$user['business_id']) {
         // Si no es superadmin y tiene un negocio, redirigimos al Welcome para que seleccione una empresa
-        header("Location: " . BASE_URL . "/business/welcome");
+        header("Location: " . BASE_URL . "/business/dashboard");
     } else {
         // Si el negocio no está asignado
         $_SESSION['error'] = "El usuario no tiene un negocio asignado.";
