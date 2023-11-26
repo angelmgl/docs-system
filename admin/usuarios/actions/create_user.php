@@ -7,7 +7,7 @@ require '../../../helpers/auth.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 // Recibe los datos del formulario.
 $full_name = $_POST['full_name'];

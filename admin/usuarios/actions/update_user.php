@@ -2,11 +2,12 @@
 
 require '../../../config/config.php';
 require '../../../helpers/forms.php';
+require '../../../helpers/auth.php';
 
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 // Recibe los datos del formulario.
 $user_id = $_POST['user_id']; // Asegúrate de enviar el ID del usuario desde el formulario.

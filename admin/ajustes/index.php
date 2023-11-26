@@ -6,7 +6,7 @@ require '../../helpers/auth.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 ?>
 

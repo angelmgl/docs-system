@@ -7,7 +7,7 @@ require '../../helpers/auth.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 $business_id = $_GET["business_id"];
 $user_id = $_GET["user_id"];

@@ -8,7 +8,7 @@ require '../../helpers/dates.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 $sql = "SELECT * FROM businesses";
 $stmt = $mydb->prepare("SELECT * FROM businesses");

@@ -6,7 +6,7 @@ require '../../../helpers/auth.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 // Prepara la sentencia para eliminar el usuario
 $stmt = $mydb->prepare("DELETE FROM users WHERE username = ?");

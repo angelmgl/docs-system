@@ -8,7 +8,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 // Preparar la consulta para obtener el usuario de la base de datos.
-$stmt = $mydb->prepare("SELECT id, full_name, password, is_superuser FROM users WHERE username = ?");
+$stmt = $mydb->prepare("SELECT id, full_name, password, role, business_id FROM users WHERE username = ?");
 $stmt->bind_param("s", $username);
 $stmt->execute();
 
@@ -21,25 +21,33 @@ if ($user && password_verify($password, $user['password'])) {
     $_SESSION['user_id'] = $user['id'];
     $_SESSION['username'] = $username;
     $_SESSION['full_name'] = $user['full_name'];
+    $_SESSION['business_id'] = $user['business_id'];
+    $_SESSION['role'] = $user['role'];
 
-    // Si es superusuario, se establece el rol y se redirige al dashboard de superadmin.
-    if ($user['is_superuser']) {
-        $_SESSION['role'] = 'superadmin';
-        update_last_login($mydb, $user['id']);
+    update_last_login($mydb, $user['id']);
+
+    $stmt->close();
+    $mydb->close();
+
+
+    // Si es superadmin, se establece el rol y se redirige al dashboard de superadmin.
+    if ($user['role'] === 'super') {
         header("Location: " . BASE_URL . "/admin/dashboard");
-        exit;
-    } else {
-        // Si no es superusuario, redirigimos al Welcome para que seleccione una empresa
-        update_last_login($mydb, $user['id']);
+    } else if (!!$user['business_id']) {
+        // Si no es superadmin y tiene un negocio, redirigimos al Welcome para que seleccione una empresa
         header("Location: " . BASE_URL . "/business/welcome");
-        exit;
+    } else {
+        // Si el negocio no está asignado
+        $_SESSION['error'] = "El usuario no tiene un negocio asignado.";
+        header("Location: " . BASE_URL . "/login.php");
     }
+    exit();
 } else {
+    $stmt->close();
+    $mydb->close();
+
     // No se encontró el usuario o la contraseña no es correcta.
     $_SESSION['error'] = "Usuario o contraseña incorrectos.";
     header("Location: " . BASE_URL . "/login.php");
     exit();
 }
-
-$stmt->close();
-$mydb->close();

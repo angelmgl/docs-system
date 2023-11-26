@@ -14,7 +14,7 @@ function hasUsers($mydb) {
 function createAdmin($email, $password, $full_name, $username, $mydb) {
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     
-    $stmt = $mydb->prepare("INSERT INTO users (email, password, full_name, username, is_superuser) VALUES (?, ?, ?, ?, true)");
+    $stmt = $mydb->prepare("INSERT INTO users (email, password, full_name, username, role) VALUES (?, ?, ?, ?, 'super')");
     $stmt->bind_param("ssss", $email, $hashedPassword, $full_name, $username);
     
     if ($stmt->execute()) {

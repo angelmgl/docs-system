@@ -36,8 +36,6 @@ function create_table($mydb, $table_name, $sql_file) {
 
 create_table($mydb, 'users', '01.users.sql');
 create_table($mydb, 'businesses', '02.businesses.sql');
-create_table($mydb, 'roles', '03.roles.sql');
-create_table($mydb, 'roles_businesses', '04.roles_businesses.sql');
 
 // Cerrar la conexión
 $mydb->close();

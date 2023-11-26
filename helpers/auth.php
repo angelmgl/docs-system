@@ -1,7 +1,7 @@
 <?php 
 
-function verifyAuthentication($user_id) {
-    if(!$user_id) {
+function verifyAuthentication() {
+    if(!$_SESSION['user_id']) {
         header("Location: " . BASE_URL . "/login.php");
         exit;
     }

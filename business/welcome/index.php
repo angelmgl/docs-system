@@ -5,10 +5,10 @@ require '../../helpers/business.php';
 require '../../helpers/auth.php';
 
 session_start();
+verifyAuthentication();
 
 $user_id = $_SESSION["user_id"];
 
-verifyAuthentication($user_id);
 
 $stmt = $mydb->prepare("
     SELECT b.*, r.name AS role_name, r.code AS role_code

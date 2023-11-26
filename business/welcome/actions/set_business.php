@@ -4,10 +4,10 @@ require '../../../config/config.php';
 require '../../../helpers/auth.php';
 
 session_start();
+verifyAuthentication();
 
 $user_id = $_SESSION["user_id"];
 
-verifyAuthentication($user_id);
 
 $business_id = $_POST['business_id'];
 $business_logo = $_POST['business_logo'];

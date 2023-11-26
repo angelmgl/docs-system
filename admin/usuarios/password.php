@@ -7,7 +7,7 @@ $title = "Cambiar contraseña";
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['superadmin']);
+verifyRoles(['super']);
 
 $username = $_GET["username"];
 
