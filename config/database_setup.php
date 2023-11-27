@@ -34,8 +34,13 @@ function create_table($mydb, $table_name, $sql_file) {
     }
 }
 
-create_table($mydb, 'users', '01.users.sql');
-create_table($mydb, 'businesses', '02.businesses.sql');
+create_table($mydb, 'businesses', '01.businesses.sql');
+create_table($mydb, 'users', '02.users.sql');
+create_table($mydb, 'categories', '03.categories.sql');
+create_table($mydb, 'image_docs', '04.image_docs.sql');
+create_table($mydb, 'images', '05.images.sql');
+create_table($mydb, 'html_docs', '06.html_docs.sql');
+create_table($mydb, 'file_docs', '07.file_docs.sql');
 
 // Cerrar la conexión
 $mydb->close();
