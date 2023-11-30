@@ -60,7 +60,7 @@ if ($business === null) {
 <html lang="es">
 
 <head>
-    <title>Agregar empresa</title>
+    <title>Editar empresa</title>
     <?php include '../../components/meta.php'; ?>
 </head>
 
@@ -68,7 +68,7 @@ if ($business === null) {
     <?php include '../../components/admin/header.php'; ?>
     <main class="container py px">
         <div class="admin-bar">
-            <h1>Agregar empresa</h1>
+            <h1>Editar empresa</h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/empresas">Regresar</a>
         </div>
 
