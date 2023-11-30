@@ -283,6 +283,15 @@ body {
     display: flex;
 }
 
+.custom-form.filter {
+    margin-top: 0;
+    align-items: center;
+}
+
+.custom-form.filter .btn {
+    margin-left: 10px;
+}
+
 .custom-form hr {
     border: 1px solid var(--off-white);
     margin-top: 40px;
@@ -321,8 +330,9 @@ body {
     display: block;
 }
 
-.custom-form .text-input input,
 .custom-form .date-input input,
+.custom-form .text-input input,
+.custom-form textarea,
 .custom-form .file-input input,
 .custom-form .select-input select {
     display: block;
@@ -747,4 +757,44 @@ body {
     margin-top: 5px;
     font-size: 14px;
     color: var(--gray-color);
+}
+
+/* CONTENIDO */
+
+.add-more {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category-item {
+    margin: 20px 0;
+    border: 1px solid var(--off-white-dark);
+    border-radius: 7px;
+    overflow: hidden;
+}
+
+.category-item .category-header {
+    background: var(--off-white);
+    padding: 20px;
+    position: relative;
+}
+
+.category-item .category-header .action {
+    top: 20px;
+    right: 20px;
+    position: absolute;
+}
+
+.category-item .category-header h2 {
+    margin-top: 0;
+}
+
+.category-item .category-header p {
+    margin-bottom: 0;
+}
+
+.category-item .category-content {
+    padding: 20px;
 }

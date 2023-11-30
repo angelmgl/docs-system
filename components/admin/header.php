@@ -5,7 +5,7 @@
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/dashboard" ?>">Dashboard</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/empresas" ?>">Empresas</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/usuarios" ?>">Usuarios</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/admin/documentos" ?>">Documentos</a>
+            <a class="nav-link" href="<?php echo BASE_URL . "/admin/contenido" ?>">Contenido</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/ajustes" ?>">Ajustes</a>
             <div 
                 class="profile-btn" 
