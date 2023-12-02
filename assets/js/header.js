@@ -1,5 +1,5 @@
 let profileBtn = document.querySelector(".profile-btn");
-let profileNav = document.querySelector(".profile-nav");
+let profileNav = document.querySelector(".profile-btn .profile-nav");
 
 profileBtn.addEventListener("click", () => {
     profileNav.classList.toggle("open");
