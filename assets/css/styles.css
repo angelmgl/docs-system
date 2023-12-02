@@ -781,10 +781,11 @@ body {
     position: relative;
 }
 
-.category-item .category-header .action {
+.category-item .category-header .actions {
     top: 20px;
     right: 20px;
     position: absolute;
+    display: flex;
 }
 
 .category-item .category-header h2 {

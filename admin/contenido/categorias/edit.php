@@ -29,7 +29,7 @@ $stmt->close();
 
 // Si no se encontró a la categoría, redirige a la página de lista de categorías.
 if ($category === null) {
-    header("Location: " . BASE_URL . "/admin/empresas.php");
+    header("Location: " . BASE_URL . "/admin/contenido");
     exit;
 }
 
@@ -63,7 +63,7 @@ $mydb->close();
     <main class="container py px">
         <div class="admin-bar">
             <h1>Editar categoría</h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/empresas">Regresar</a>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/contenido/?business_id=<?php echo $category["business_id"] ?>">Regresar</a>
         </div>
 
         <section>
