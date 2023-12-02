@@ -17,7 +17,7 @@
                 style="background-image: url(<?php echo $_SESSION['profile_picture'] ? BASE_URL . $_SESSION['profile_picture'] : BASE_URL . '/assets/img/avatar.webp'; ?>)"
             >
                 <div class="profile-nav">
-                    <a class="profile-link" href="<?php echo BASE_URL . "/business/perfil" ?>">Mi perfil</a>
+                    <a class="profile-link" href="<?php echo BASE_URL . "/perfil" ?>">Mi perfil</a>
                     <form action="<?php echo BASE_URL ?>/actions/auth_logout.php" method="post">
                         <button class="profile-link" type="submit" name="logout">Cerrar sesión</button>
                     </form>

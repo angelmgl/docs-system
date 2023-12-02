@@ -1,21 +1,19 @@
 <?php
 
-require '../../config/config.php';
-require '../../helpers/auth.php';
+require '../config/config.php';
+require '../helpers/auth.php';
 $title = "Cambiar contraseña";
 
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['super']);
-
-$username = $_GET["username"];
+verifyAuthentication();
 
 $user = null;
 
 // preparar la consulta
-$stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
+$stmt = $mydb->prepare("SELECT * FROM users WHERE id = ?");
+$stmt->bind_param("i", $_SESSION['user_id']);
 
 // ejecutar la consulta
 $stmt->execute();
@@ -30,7 +28,7 @@ $mydb->close();
 
 // Si no se encontró al usuario, redirige a la página de lista de usuarios.
 if ($user === null) {
-    header("Location: " . BASE_URL . "/admin/users.php");
+    header("Location: " . BASE_URL . '/perfil');
     exit;
 }
 
@@ -40,16 +38,22 @@ if ($user === null) {
 <html lang="es">
 
 <head>
-    <?php include '../../components/meta.php'; ?>
+    <?php include '../components/meta.php'; ?>
 </head>
 
 <body>
-    <?php include '../../components/admin/header.php'; ?>
+    <?php 
+        if($_SESSION['role'] === 'super') {
+            include '../components/admin/header.php';
+        } else {
+            include '../components/business/header.php';
+        }
+    ?>
 
     <main class="container px py">
         <div class="admin-bar">
-            <h1>Cambiar contraseña de <?php echo $user['full_name'] ?></h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/edit-user.php?username=<?php echo $username ?>">Volver</a>
+            <h1>Cambiar mi contraseña</h1>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL . '/perfil'?>">Volver</a>
         </div>
 
         <section>
@@ -63,9 +67,6 @@ if ($user === null) {
             ?>
             <form class="custom-form" action="./actions/update_password.php" method="POST" enctype="multipart/form-data">
                 <div class="data-section">
-                    <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id']; ?>">
-                    <input type="hidden" id="username" name="username" value="<?php echo $username; ?>">
-
                     <div class="input-wrapper text-input">
                         <label for="password">Nueva contraseña:</label>
                         <input type="password" id="password" name="password" required>

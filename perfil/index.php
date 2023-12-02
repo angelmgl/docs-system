@@ -1,15 +1,14 @@
 <?php
 
-require '../../config/config.php';
-require '../../helpers/forms.php';
-require '../../helpers/users.php';
-require '../../helpers/business.php';
-require '../../helpers/auth.php';
+require '../config/config.php';
+require '../helpers/forms.php';
+require '../helpers/users.php';
+require '../helpers/business.php';
+require '../helpers/auth.php';
 
 // iniciar sesión y verificar autorización
 session_start();
-
-verifyRoles(['super']);
+verifyAuthentication();
 
 $username = $_SESSION["username"];
 
@@ -46,6 +45,8 @@ if ($user === null) {
     header("Location: " . BASE_URL . "/admin/usuarios.php");
     exit;
 }
+
+$return_url = null;
 ?>
 
 <!DOCTYPE html>
@@ -53,15 +54,23 @@ if ($user === null) {
 
 <head>
     <title>Mi perfil</title>
-    <?php include '../../components/meta.php'; ?>
+    <?php include '../components/meta.php'; ?>
 </head>
 
 <body>
-    <?php include '../../components/admin/header.php'; ?>
+    <?php 
+    if($_SESSION['role'] === 'super') {
+        include '../components/admin/header.php';
+        $return_url = BASE_URL . '/admin/dashboard';
+    } else {
+        include '../components/business/header.php';
+        $return_url = BASE_URL . '/business/dashboard';
+    }
+    ?>
     <main class="container py px">
         <div class="admin-bar">
             <h1>Mi perfil</h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/dashboard">Regresar</a>
+            <a class="btn btn-secondary" href="<?php echo $return_url ?>">Regresar</a>
         </div>
 
         <section>
@@ -114,11 +123,11 @@ if ($user === null) {
 
                 <div class="manage-section">
 
-                    <?php include '../../components/admin/profile_picture_field.php' ?>
+                    <?php include '../components/admin/profile_picture_field.php' ?>
 
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Guardar datos">
 
-                    <a href="<?php echo BASE_URL . "/admin/usuarios/password.php?username=" . $user['username'] ?>" class="change-password">Cambiar contraseña</a>
+                    <a href="<?php echo BASE_URL . '/perfil/password.php'?>" class="change-password">Cambiar contraseña</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
