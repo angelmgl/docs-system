@@ -3,8 +3,6 @@
 require '../../config/config.php';
 require '../../helpers/auth.php';
 
-$title = "Eliminar usuario";
-
 // iniciar sesión y verificar autorización
 session_start();
 
@@ -41,6 +39,7 @@ if ($user === null) {
 <html lang="es">
 
 <head>
+    <title>Eliminar usuario</title>
     <?php include '../../components/meta.php'; ?>
 </head>
 
