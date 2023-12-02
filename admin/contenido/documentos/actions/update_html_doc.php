@@ -9,7 +9,8 @@ session_start();
 
 verifyRoles(['super']);
 
-// Recibir los datos del formulario
+// Recibe los datos del formulario.
+$document_id = $_POST['document_id']; // Asegúrate de enviar el ID del documento desde el formulario.
 $name = $_POST['name'];
 $description = $_POST['description'];
 $code = $_POST['code'];
@@ -17,16 +18,15 @@ $category_id = $_POST['category_id'];
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    INSERT INTO html_docs (name, description, code, category_id) 
-    VALUES (?, ?, ?, ?)
+    UPDATE html_docs SET name = ?, description = ?, code = ?, category_id = ?
+    WHERE id = ?
 ");
 
-$stmt->bind_param("sssi", $name, $description, $code, $category_id);
+$stmt->bind_param("sssii", $name, $description, $code, $category_id, $document_id);
 
 try {
-    // Intenta ejecutar la consulta
     if ($stmt->execute()) {
-        $_SESSION['success'] = "Documento agregado exitosamente";
+        $_SESSION['success'] = "Documento actualizado exitosamente";
 
         // Cerrar la sentencia y la conexión antes de redirigir
         $stmt->close();
@@ -35,18 +35,14 @@ try {
         header("Location: " . BASE_URL . "/admin/contenido/categorias/?category_id=" . $category_id);
         exit;
     } else {
-        // Si hay un error, lo manejamos
         handle_form_error("Error: " . $stmt->error, array(
             'name' => $name,
-            'description' => $description
-        ), "/admin/contenido/documentos/add_html.php?category_id=" . $category_id);
+        ), "/admin/contenido/documentos/edit_html.php?document_id=" . $document_id);
     }
 } catch (Exception $e) {
-    // Esto atrapará cualquier excepción o error fatal que ocurra
-    handle_form_error("Error: " . $stmt->error, array(
+    handle_form_error("Error: " . $e->getMessage(), array(
         'name' => $name,
-        'description' => $description
-    ), "/admin/contenido/documentos/add_html.php?category_id=" . $category_id);
+    ), "/admin/contenido/documentos/edit_html.php?document_id=" . $document_id);
 }
 
 $stmt->close();

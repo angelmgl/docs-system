@@ -2,15 +2,12 @@
 
 require '../../../config/config.php';
 require '../../../helpers/forms.php';
-require '../../../helpers/business.php';
 require '../../../helpers/auth.php';
 
 // iniciar sesión y verificar autorización
 session_start();
 
 verifyRoles(['super']);
-
-$doc_type = isset($_GET["doc_type"]) ? (int) $_GET["doc_type"] : null;
 
 $category_id = isset($_GET["category_id"]) ? (int) $_GET["category_id"] : 0;
 
@@ -46,9 +43,6 @@ $mydb->close();
 if ($category === null) {
     header("Location: " . BASE_URL . "/admin/contenido");
     exit;
-} else if ($doc_type === null) {
-    header("Location: " . BASE_URL . "/admin/contenido/categorias/?category_id=" . $category_id);
-    exit;
 }
 ?>
 
@@ -64,7 +58,10 @@ if ($category === null) {
     <?php include '../../../components/admin/header.php'; ?>
     <main class="container py px">
         <div class="admin-bar">
-            <h1>Agregar documento</h1>
+            <div>
+                <h1>Agregar documento</h1>
+                <p>Fragmento de código HTML, tablas de PowerBI, etc.</p>
+            </div>
             <a class="btn btn-secondary" href="<?php echo BASE_URL . "/admin/contenido/categorias/?category_id=" . $category_id ?>">Regresar</a>
         </div>
 
@@ -92,7 +89,7 @@ if ($category === null) {
 
                     <div class="input-wrapper text-input">
                         <label for="code">Fragmento de código: <span class="required">*</span></label>
-                        <textarea rows="4" id="code" name="code" required><?php echo get_form_data('code'); ?> </textarea>
+                        <textarea rows="12" id="code" name="code" required><?php echo get_form_data('code'); ?> </textarea>
                     </div>
                 </div>
 
