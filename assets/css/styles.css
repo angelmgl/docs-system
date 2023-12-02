@@ -11,6 +11,8 @@ body {
 :root {
     --primary-color: #3498db;
     --primary-color-dark: #2980b9;
+    --secondary-color: #1abc9c;
+    --secondary-color-dark: #16a085;
     --accent-color: #f1c40f;
     --danger-color: #e8776b;
     --danger-color-dark: #e74c3c;
@@ -236,6 +238,12 @@ body {
     border: none;
 }
 
+.action.view {
+    background: var(--secondary-color);
+}
+.action.view:hover {
+    background: var(--secondary-color-dark);
+}
 .action.edit {
     background: var(--primary-color);
 }
@@ -798,6 +806,9 @@ body {
 
 .category-item .category-content {
     padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .category-actions {

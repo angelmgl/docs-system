@@ -127,8 +127,7 @@ $mydb->close();
                                     </div>
                                 </div>
                                 <div class="category-content">
-                                    <p>contenido de esta categoría...</p>
-                                    <a href="<?php echo BASE_URL ?>/admin/contenido/categorias?category_id=<?php echo $category["id"]; ?>" class="btn btn-primary">Ver todos</a>
+                                    <a href="<?php echo BASE_URL ?>/admin/contenido/categorias?category_id=<?php echo $category["id"]; ?>" class="btn btn-primary">Ver documentos</a>
                                 </div>
                             </div>
                     <?php }

@@ -39,19 +39,23 @@ if ($category === null) {
     exit;
 }
 
-// consulta de documentos
-// $business_stmt = $mydb->prepare("SELECT * FROM businesses WHERE is_active = 1");
-// $business_stmt->execute();
-// $business_result = $business_stmt->get_result();
+$docs_stmt = $mydb->prepare("
+    SELECT 'html' as type, id, name, description FROM html_docs WHERE category_id = ?
+    UNION
+    SELECT 'file' as type, id, name, description FROM file_docs WHERE category_id = ?
+    UNION
+    SELECT 'image' as type, id, name, description FROM image_docs WHERE category_id = ?
+");
+$docs_stmt->bind_param("iii", $category_id, $category_id, $category_id);
+$docs_stmt->execute();
 
-// $businesses = [];
-// if ($business_result->num_rows > 0) {
-//     while ($row = $business_result->fetch_assoc()) {
-//         $businesses[] = $row;
-//     }
-// }
+$result = $docs_stmt->get_result();
+$docs = [];
+while ($row = $result->fetch_assoc()) {
+    $docs[] = $row;
+}
 
-// $business_stmt->close();
+$docs_stmt->close();
 
 $mydb->close();
 ?>
@@ -97,31 +101,26 @@ $mydb->close();
             <div class="category-actions">
                 <button class="btn btn-primary" id="create-doc">Agregar documento</button>
                 <div class="profile-nav">
-                    <a 
-                        class="profile-link" 
-                        href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=images&category_id=' . $category_id ?>"
-                    >
+                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=images&category_id=' . $category_id ?>">
                         Imágenes
                     </a>
-                    <a 
-                        class="profile-link" 
-                        href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=file&category_id=' . $category_id ?>"
-                    >
+                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=file&category_id=' . $category_id ?>">
                         Documentos
                     </a>
-                    <a 
-                        class="profile-link" 
-                        href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=html&category_id=' . $category_id ?>"
-                    >
+                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=html&category_id=' . $category_id ?>">
                         Fragmento de código
                     </a>
                 </div>
             </div>
 
-            <p>lista de documentos aquí...</p>
+            <?php if (empty($docs)) { ?>
+                <p>No hay documentos de esta categoría...</p>
+            <?php } else {
+                include '../../../components/admin/docs_table.php';
+            } ?>
         </section>
     </main>
-    
+
     <script src="<?php echo BASE_URL ?>/assets/js/category.js"></script>
 </body>
 
