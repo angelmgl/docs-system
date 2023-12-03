@@ -104,7 +104,7 @@ $mydb->close();
                     <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add_image.php?category_id=' . $category_id ?>">
                         Imágenes
                     </a>
-                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=file&category_id=' . $category_id ?>">
+                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add_file.php?category_id=' . $category_id ?>">
                         Documentos
                     </a>
                     <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add_html.php?category_id=' . $category_id ?>">

@@ -3,8 +3,10 @@ CREATE TABLE file_docs (
     name VARCHAR(100) NOT NULL,
     description VARCHAR(400) NULL,
     category_id INT(11) UNSIGNED NOT NULL,
-    url VARCHAR(150) NOT NULL,
-    type VARCHAR(10) NOT NULL,
+    file_path VARCHAR(150) NOT NULL,
+    file_name VARCHAR(150) NOT NULL,
+    file_weight INT NOT NULL,
+    file_extension VARCHAR(10) NOT NULL,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 

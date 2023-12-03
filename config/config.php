@@ -22,3 +22,4 @@ define('MAIL_USERNAME', 'my@xxxxx.net');
 define('MAIL_PASSWORD', 'xxxxx');
 define('MAIL_FROM', 'my@xxxxx.net');
 define('APP_NAME', 'Sistema');
+define('FILE_MAX_SIZE', 20 * 1024 * 1024); // 20 mb
