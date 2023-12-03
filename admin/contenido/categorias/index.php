@@ -101,7 +101,7 @@ $mydb->close();
             <div class="category-actions">
                 <button class="btn btn-primary" id="create-doc">Agregar documento</button>
                 <div class="profile-nav">
-                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=images&category_id=' . $category_id ?>">
+                    <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add_image.php?category_id=' . $category_id ?>">
                         Imágenes
                     </a>
                     <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add.php?doc_type=file&category_id=' . $category_id ?>">
