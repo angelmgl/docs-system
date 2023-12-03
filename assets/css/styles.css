@@ -862,3 +862,52 @@ body {
     width: 100%;
     max-width: 500px;
 }
+
+/* vista de imágenes y galería */
+.photo-grid {
+    margin-top: 80px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.photo-grid .document-photo {
+    max-width: 100%;
+    cursor: pointer;
+}
+
+.document-title {
+    display: flex;
+    align-items: center;
+}
+
+.document-title a {
+    margin-left: 20px;
+    font-size: 20px;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.document-title a:hover {
+    color: var(--primary-color-dark);
+}
+
+.add-image {
+    background: var(--off-white);
+    height: 100%;
+    width: 100%;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    color: var(--primary-color);
+    transition: all 0.4s;
+}
+
+.add-image:hover {
+    background: var(--off-white-dark);
+    color: var(--primary-color-dark);
+}

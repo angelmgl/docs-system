@@ -23,6 +23,7 @@
                 $doc_type = "Documento";
             } else if($doc["type"] === "image") {
                 $doc_type = "Imágenes";
+                $view_url = $view_url . "images.php?document_id=" . $doc["id"];
                 $edit_url = $edit_url . "edit_image.php?document_id=" . $doc["id"];
             } 
         ?>
