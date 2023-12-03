@@ -109,7 +109,7 @@ if ($document === null) {
             }
             ?>
 
-            <form class="custom-form" action="./actions/update_html_doc.php" method="POST">
+            <form class="custom-form" action="./actions/update_image_doc.php" method="POST">
                 <input type="hidden" name="document_id" value="<?php echo $document_id ?>">
 
                 <div class="data-section">
