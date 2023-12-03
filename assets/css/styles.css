@@ -23,6 +23,10 @@ body {
     --black-color: #232323;
 }
 
+.hidden {
+    display: none!important;
+}
+
 .container {
     max-width: 1140px;
     margin: 0 auto;

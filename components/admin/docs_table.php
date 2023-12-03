@@ -22,6 +22,7 @@
             } else if($doc["type"] === "file") {
                 $doc_type = "Documento";
                 $view_url = $view_url . "file.php?document_id=" . $doc["id"];
+                $edit_url = $edit_url . "edit_file.php?document_id=" . $doc["id"];
             } else if($doc["type"] === "image") {
                 $doc_type = "Imágenes";
                 $view_url = $view_url . "images.php?document_id=" . $doc["id"];
