@@ -106,6 +106,11 @@ if ($document === null) {
                 echo $_SESSION['error'];
                 echo '</p>';
                 unset($_SESSION['error']);
+            } else if (isset($_SESSION['success'])) {
+                echo '<p class="success">';
+                echo $_SESSION['success'];
+                echo '</p>';
+                unset($_SESSION['success']);
             }
             ?>
 

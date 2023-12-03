@@ -1,7 +1,6 @@
 <table class="business-table">
     <thead>
         <tr>
-            <th class="id-column">ID</th>
             <th class="type_column">Tipo</th>
             <th class="title_column">Título</th>
             <th class="description-column">Descripción</th>
@@ -28,7 +27,6 @@
             } 
         ?>
             <tr>
-                <td class="id-column"><?php echo $doc["id"] ?></td>
                 <td class="type_column"><?php echo $doc_type ?></td>
                 <td class="title-column"><?php echo $doc["name"] ?></td>
                 <td class="description-column">
