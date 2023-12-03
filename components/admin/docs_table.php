@@ -17,7 +17,7 @@
 
             if($doc["type"] === "html") {
                 $doc_type = "HTML";
-                $view_url = $view_url . "code.php?id=" . $doc["id"];
+                $view_url = $view_url . "code.php?document_id=" . $doc["id"];
                 $edit_url = $edit_url . "edit_html.php?document_id=" . $doc["id"];
             } else if($doc["type"] === "file") {
                 $doc_type = "Documento";

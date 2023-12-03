@@ -46,6 +46,12 @@ body {
     font-weight: 600;
 }
 
+.tag {
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
 .btn {
     padding: 8px 20px;
     border: none;
