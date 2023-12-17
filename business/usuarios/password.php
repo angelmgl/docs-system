@@ -7,15 +7,17 @@ $title = "Cambiar contraseña";
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['super']);
+verifyRoles(['admin']);
+
+$my_business = $_SESSION['business_id'];
 
 $username = $_GET["username"];
 
 $user = null;
 
 // preparar la consulta
-$stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
+$stmt = $mydb->prepare("SELECT * FROM users WHERE username = ? AND business_id = ?");
+$stmt->bind_param("si", $username, $my_business);
 
 // ejecutar la consulta
 $stmt->execute();
@@ -30,7 +32,7 @@ $mydb->close();
 
 // Si no se encontró al usuario, redirige a la página de lista de usuarios.
 if ($user === null) {
-    header("Location: " . BASE_URL . "/admin/usuarios");
+    header("Location: " . BASE_URL . "/business/usuarios");
     exit;
 }
 
@@ -44,12 +46,12 @@ if ($user === null) {
 </head>
 
 <body>
-    <?php include '../../components/admin/header.php'; ?>
+    <?php include '../../components/business/header.php'; ?>
 
     <main class="container px py">
         <div class="admin-bar">
             <h1>Cambiar contraseña de <?php echo $user['full_name'] ?></h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/usuarios/edit.php?username=<?php echo $username ?>">Volver</a>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/business/usuarios/edit.php?username=<?php echo $username ?>">Volver</a>
         </div>
 
         <section>

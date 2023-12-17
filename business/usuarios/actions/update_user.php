@@ -37,11 +37,11 @@ $profile_picture_path = $profile_picture_path ? $profile_picture_path : $old_pho
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    UPDATE users SET email = ?, full_name = ?, username = ?, profile_picture = ?, role = ?, business_id = ?, is_active = ?
-    WHERE id = ?
+    UPDATE users SET email = ?, full_name = ?, username = ?, profile_picture = ?, role = ?, is_active = ?
+    WHERE id = ? AND business_id = ?
 ");
 
-$stmt->bind_param("sssssiii", $email, $full_name, $username, $profile_picture_path, $role, $business_id, $is_active, $user_id);
+$stmt->bind_param("sssssiii", $email, $full_name, $username, $profile_picture_path, $role, $is_active, $user_id, $business_id);
 
 try {
     if ($stmt->execute()) {

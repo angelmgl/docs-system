@@ -108,7 +108,7 @@ if ($user === null) {
 
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Usuario">
 
-                    <a href="<?php echo BASE_URL . "/admin/usuarios/password.php?username=" . $user['username'] ?>" class="change-password">Cambiar contraseña</a>
+                    <a href="<?php echo BASE_URL . "/business/usuarios/password.php?username=" . $user['username'] ?>" class="change-password">Cambiar contraseña</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
