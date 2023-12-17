@@ -8,10 +8,9 @@
         <span class="app-name">SISTEMA</span>
         <nav>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/dashboard" ?>">Dashboard</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/business/empresas" ?>">Empresas</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/usuarios" ?>">Usuarios</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/documentos" ?>">Documentos</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/business/ajustes" ?>">Ajustes</a>
+            <a class="nav-link" href="<?php echo BASE_URL . "/business/empresa" ?>">Empresa</a>
             <div 
                 class="profile-btn" 
                 style="background-image: url(<?php echo $_SESSION['profile_picture'] ? BASE_URL . $_SESSION['profile_picture'] : BASE_URL . '/assets/img/avatar.webp'; ?>)"
