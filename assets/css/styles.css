@@ -498,10 +498,12 @@ body {
 
 .grid.cols-2 {
     grid-template-columns: repeat(2, 1fr);
+    align-items: center;
 }
 
 .grid.cols-3 {
     grid-template-columns: repeat(3, 1fr);
+    align-items: center;
 }
 
 .grid.cols-4 {

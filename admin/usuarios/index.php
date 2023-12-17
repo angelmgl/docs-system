@@ -107,21 +107,21 @@ $mydb->close();
         <form method="GET" class="custom-form filters-container grid cols-4">
             <!-- buscador por nombre -->
             <div class="input-wrapper text-input">
-                <label for="full_name">Nombre completo: <span class="required">*</span></label>
+                <label for="full_name">Nombre completo:</label>
                 <input type="text" id="full_name" name="full_name" value="<?php echo $full_name_value_display; ?>">
             </div>
             <!-- filtrar por empresa -->
             <div class="input-wrapper select-input">
-                    <label for="business_id">Seleccionar empresa:</label>
-                    <select id="business_id" name="business_id">
-                        <option value="">Selecciona...</option>
-                        <?php foreach ($businesses as $business) { ?>
-                            <option value="<?php echo $business["id"] ?>" <?php echo $business_id_value == $business['id'] ? 'selected' : '' ?>>
-                                <?php echo $business["name"] ?>
-                            </option>
-                        <?php } ?>
-                    </select>
-                </div>
+                <label for="business_id">Seleccionar empresa:</label>
+                <select id="business_id" name="business_id">
+                    <option value="">Selecciona...</option>
+                    <?php foreach ($businesses as $business) { ?>
+                        <option value="<?php echo $business["id"] ?>" <?php echo $business_id_value == $business['id'] ? 'selected' : '' ?>>
+                            <?php echo $business["name"] ?>
+                        </option>
+                    <?php } ?>
+                </select>
+            </div>
             <!-- filtrar por rol -->
             <div class="input-wrapper select-input">
                 <label for="role">Seleccionar rol:</label>
