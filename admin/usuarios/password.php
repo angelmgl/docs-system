@@ -49,7 +49,7 @@ if ($user === null) {
     <main class="container px py">
         <div class="admin-bar">
             <h1>Cambiar contraseña de <?php echo $user['full_name'] ?></h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/edit-user.php?username=<?php echo $username ?>">Volver</a>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/usuarios/edit.php?username=<?php echo $username ?>">Volver</a>
         </div>
 
         <section>
@@ -71,12 +71,17 @@ if ($user === null) {
                         <input type="password" id="password" name="password" required>
                     </div>
 
+                    <div class="input-wrapper text-input">
+                        <label for="password_repeat">Repetir contraseña:</label>
+                        <input type="password" id="password_repeat" name="password_repeat" required>
+                    </div>
+
                     <label class="cursor-pointer" for="show-password">
                         <input type="checkbox" id="show-password">
                         Mostrar contraseña
                     </label>
 
-                    <p>
+                    <p id="pw-message">
                         No olvides que una contraseña segura tiene al menos 8 caracteres.
                     </p>
                 </div>
