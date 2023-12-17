@@ -5,6 +5,7 @@ $active_class = $user["is_active"] == 1 ? "active" : "inactive";
 
 <article class="user-card <?php echo $active_class ?>">
     <div class="profile-picture" style="background-image: url(<?php echo get_profile_picture($user); ?>)">
+        <span class="role-tag <?php echo $user['role']?>"><?php echo get_role($user) ?></span>
         <div class="actions">
             <a href="<?php echo BASE_URL ?>/admin/usuarios/edit.php?username=<?php echo $user["username"]; ?>" class="action edit">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">

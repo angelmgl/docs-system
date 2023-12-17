@@ -80,7 +80,7 @@ $mydb->close();
     <section class="container py px">
         <div class="admin-bar">
             <h1>Administrar Usuarios</h1>
-            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/usuarios/add.php">Añadir usuario</a>
+            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/business/usuarios/add.php">Añadir usuario</a>
         </div>
 
         <?php
@@ -109,7 +109,7 @@ $mydb->close();
             </div>
             <!-- filtrar por estado -->
             <div class="input-wrapper select-input">
-                <label for="is_active">Seleccionar rol:</label>
+                <label for="is_active">Seleccionar estado:</label>
                 <select id="is_active" name="is_active">
                     <option value="" <?php echo ($is_active_value == '') ? 'selected' : ''; ?>>Selecciona...</option>
                     <option value="1" <?php echo ($is_active_value == '1') ? 'selected' : ''; ?>>Activo</option>
