@@ -76,7 +76,7 @@ $mydb->close();
 </head>
 
 <body>
-    <?php include '../../components/admin/header.php'; ?>
+    <?php include '../../components/business/header.php'; ?>
     <section class="container py px">
         <div class="admin-bar">
             <h1>Administrar Usuarios</h1>
