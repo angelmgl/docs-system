@@ -11,6 +11,7 @@ session_start();
 verifyRoles(['super']);
 
 $category_id = $_GET["category_id"];
+$doc_type_value = isset($_GET['doc_type']) ? htmlspecialchars($_GET['doc_type']) : '';
 
 $category = null;
 
@@ -39,14 +40,35 @@ if ($category === null) {
     exit;
 }
 
-$docs_stmt = $mydb->prepare("
-    SELECT 'html' as type, id, name, description FROM html_docs WHERE category_id = ?
-    UNION
-    SELECT 'file' as type, id, name, description FROM file_docs WHERE category_id = ?
-    UNION
-    SELECT 'image' as type, id, name, description FROM image_docs WHERE category_id = ?
-");
-$docs_stmt->bind_param("iii", $category_id, $category_id, $category_id);
+$doc_type_value = isset($_GET['doc_type']) ? htmlspecialchars($_GET['doc_type']) : '';
+
+$sql = "";
+$params = [];
+$types = "";
+
+// Validar y construir la consulta según el tipo de documento
+$valid_doc_types = ['html', 'file', 'image'];
+if (in_array($doc_type_value, $valid_doc_types)) {
+    $sql = "SELECT '$doc_type_value' AS type, id, name, description FROM {$doc_type_value}_docs WHERE category_id = ?";
+    $types = 'i';
+    $params[] = &$category_id;
+} else {
+    // Si no se selecciona ningún tipo, incluir todas las tablas
+    $sql = "
+        SELECT 'html' as type, id, name, description FROM html_docs WHERE category_id = ?
+        UNION
+        SELECT 'file' as type, id, name, description FROM file_docs WHERE category_id = ?
+        UNION
+        SELECT 'image' as type, id, name, description FROM image_docs WHERE category_id = ?
+    ";
+    $types = 'iii';
+    $params[] = &$category_id;
+    $params[] = &$category_id;
+    $params[] = &$category_id;
+}
+
+$docs_stmt = $mydb->prepare($sql);
+call_user_func_array([$docs_stmt, 'bind_param'], array_merge([$types], $params));
 $docs_stmt->execute();
 
 $result = $docs_stmt->get_result();
@@ -99,7 +121,24 @@ $mydb->close();
             </div>
 
             <div class="category-actions">
+                <!-- filtrar por tipo de documento -->
+                <form method="GET" class="custom-form grid cols-2" style="max-width: 50%; margin-top: 0">
+                    <input type="hidden" name="category_id" value="<?php echo $category_id ?>" />
+                    <div class="input-wrapper select-input">
+                        <label for="doc_type">Seleccionar tipo de documento:</label>
+                        <select id="doc_type" name="doc_type">
+                            <option value="">Selecciona...</option>
+                            <option value="html" <?php echo $doc_type_value === 'html' ? 'selected' : ''; ?>>HTML</option>
+                            <option value="file" <?php echo $doc_type_value === 'file' ? 'selected' : ''; ?>>Documento</option>
+                            <option value="image" <?php echo $doc_type_value === 'image' ? 'selected' : ''; ?>>Imágenes</option>
+                        </select>
+                    </div>
+                    <!-- buscar -->
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
+
                 <button class="btn btn-primary" id="create-doc">Agregar documento</button>
+
                 <div class="profile-nav">
                     <a class="profile-link" href="<?php echo BASE_URL . '/admin/contenido/documentos/add_image.php?category_id=' . $category_id ?>">
                         Imágenes
