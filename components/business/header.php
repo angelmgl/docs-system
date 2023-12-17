@@ -9,7 +9,7 @@
         <nav>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/dashboard" ?>">Dashboard</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/usuarios" ?>">Usuarios</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/business/documentos" ?>">Documentos</a>
+            <a class="nav-link" href="<?php echo BASE_URL . "/business/contenido" ?>">Contenido</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/empresa" ?>">Empresa</a>
             <div 
                 class="profile-btn" 
