@@ -88,7 +88,7 @@ $mydb->close();
                 } ?>
 
                 <div class="add-more">
-                    <a class="btn btn-primary" href="<?php echo BASE_URL . '/admin/contenido/categorias/add.php' ?>">Añadir Categoría</a>
+                    <a class="btn btn-primary" href="<?php echo BASE_URL . '/business/contenido/categorias/add.php' ?>">Añadir Categoría</a>
                 </div>
             </section>
         </div>
