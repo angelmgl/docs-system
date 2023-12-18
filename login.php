@@ -5,11 +5,11 @@ session_start();
 
 // Si el usuario ya tiene una sesión iniciada y es admin redirige al dashboard
 if (isset($_SESSION['role'])) {
-    if ($_SESSION['role'] == "superadmin") {
+    if ($_SESSION['role'] == "super") {
         header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } elseif ($_SESSION['role'] == "admin" || $_SESSION['role'] == "analyst") {
-        header("Location: " . BASE_URL . "/business/dashboard.php");
+        header("Location: " . BASE_URL . "/business/dashboard");
         exit;
     }
 }

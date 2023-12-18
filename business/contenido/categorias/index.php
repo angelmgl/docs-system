@@ -157,7 +157,7 @@ $mydb->close();
             <?php if (empty($docs)) { ?>
                 <p>No hay documentos de esta categoría...</p>
             <?php } else {
-                include '../../../components/admin/docs_table.php';
+                include '../../../components/business/docs_table.php';
             } ?>
         </section>
     </main>
