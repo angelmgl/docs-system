@@ -115,7 +115,7 @@ $return_url = null;
                             <div class="logo" style="background-image: url(<?php echo get_logo($user) ?>)"></div>
                             <div class="my-business-content">
                                 <p class="my-business-name"><?php echo $user["business"] ?></p>
-                                <p class="my-business-role"><?php echo $user["role"] ?></p>
+                                <p class="my-business-role"><?php echo get_role($user) ?></p>
                             </div>
                         </div>
                     <?php } ?>
