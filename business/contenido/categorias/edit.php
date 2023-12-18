@@ -84,7 +84,7 @@ $mydb->close();
                 </div>
 
                 <div class="manage-section">
-                    <input id="submit-btn" class="btn btn-primary" type="submit" value="Crear Categoría">
+                    <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Categoría">
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
