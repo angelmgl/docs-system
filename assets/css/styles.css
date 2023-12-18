@@ -972,3 +972,31 @@ body {
 .file-preview .file-actions a:hover {
     color: var(--primary-color-dark);
 }
+
+/* página de la empresa */
+
+.users-list {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    align-items: center;
+    gap: 10px;
+}
+
+.users-list .user-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.users-list .user-item h3 {
+    margin: 7px 0;
+    text-align: center;
+}
+
+.users-list .user-item p {
+    margin: 0;
+    color: var(--primary-color);
+    text-align: center;
+}
