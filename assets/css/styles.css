@@ -776,6 +776,7 @@ body {
 /* MI PERFIL */
 
 .my-business-card {
+    position: relative;
     display: flex;
     align-items: center;
     background: var(--off-white);
@@ -999,4 +1000,16 @@ body {
     margin: 0;
     color: var(--primary-color);
     text-align: center;
+}
+
+.edit-business {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: var(--primary-color);
+    font-size: 20px;
+}
+
+.edit-business:hover {
+    color: var(--primary-color-dark);
 }
