@@ -8,7 +8,9 @@
         <span class="app-name">SISTEMA</span>
         <nav>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/dashboard" ?>">Dashboard</a>
+            <?php if($_SESSION["role"] === "admin") { ?>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/usuarios" ?>">Usuarios</a>
+            <?php } ?>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/contenido" ?>">Contenido</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/empresa" ?>">Empresa</a>
             <div 

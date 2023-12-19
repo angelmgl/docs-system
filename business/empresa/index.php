@@ -8,7 +8,7 @@ require '../../helpers/users.php';
 
 // iniciar sesión y verificar autorización
 session_start();
-verifyRoles(['admin', ' analyst']);
+verifyRoles(['admin', 'analyst']);
 
 $my_business = $_SESSION['business_id'];
 

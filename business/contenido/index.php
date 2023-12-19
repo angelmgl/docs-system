@@ -7,7 +7,7 @@ require '../../helpers/business.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['admin']);
+verifyRoles(['admin', 'analyst']);
 
 $my_business = $_SESSION['business_id'];
 
@@ -67,6 +67,7 @@ $mydb->close();
                             <div class="category-header">
                                 <h2><?php echo $category["name"] ?></h2>
                                 <p><?php echo $category["description"] ?></p>
+                                <?php if($_SESSION["role"] === "admin") { ?>
                                 <div class="actions">
                                     <a href="<?php echo BASE_URL ?>/business/contenido/categorias/edit.php?category_id=<?php echo $category["id"]; ?>" class="action edit">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
@@ -79,6 +80,7 @@ $mydb->close();
                                         </svg>
                                     </a>
                                 </div>
+                                <?php } ?>
                             </div>
                             <div class="category-content">
                                 <a href="<?php echo BASE_URL ?>/business/contenido/categorias?category_id=<?php echo $category["id"]; ?>" class="btn btn-primary">Ver documentos</a>
@@ -87,9 +89,11 @@ $mydb->close();
                 <?php }
                 } ?>
 
+                <?php if($_SESSION["role"] === "admin") { ?>
                 <div class="add-more">
                     <a class="btn btn-primary" href="<?php echo BASE_URL . '/business/contenido/categorias/add.php' ?>">Añadir Categoría</a>
                 </div>
+                <?php } ?>
             </section>
         </div>
     </section>

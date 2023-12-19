@@ -8,7 +8,7 @@ require '../../../helpers/business.php';
 // iniciar sesión y verificar autorización
 session_start();
 
-verifyRoles(['admin']);
+verifyRoles(['admin', 'analyst']);
 
 $my_business = $_SESSION['business_id'];
 
@@ -139,6 +139,7 @@ $mydb->close();
                     <button type="submit" class="btn btn-primary">Filtrar</button>
                 </form>
 
+                <?php if($_SESSION["role"] === "admin") { ?>
                 <button class="btn btn-primary" id="create-doc">Agregar documento</button>
 
                 <div class="profile-nav">
@@ -152,6 +153,7 @@ $mydb->close();
                         Fragmento de código
                     </a>
                 </div>
+                <?php } ?>
             </div>
 
             <?php if (empty($docs)) { ?>
