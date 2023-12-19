@@ -750,6 +750,7 @@ body {
     border-radius: 7px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    z-index: 99;
 }
 
 .profile-nav.open {
