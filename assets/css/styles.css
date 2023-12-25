@@ -1014,3 +1014,34 @@ body {
 .edit-business:hover {
     color: var(--primary-color-dark);
 }
+
+/* USER MINI FORM */
+
+.user-mini-form {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--off-white);
+}
+
+.user-mini-form h4 {
+    margin: 0 0 6px;
+}
+
+.user-mini-form span {
+    color: var(--primary-color);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.user-mini-form .user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-mini-form .user-info .logo {
+    margin-right: 10px;
+}
