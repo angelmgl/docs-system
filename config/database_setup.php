@@ -41,6 +41,7 @@ create_table($mydb, 'image_docs', '04.image_docs.sql');
 create_table($mydb, 'images', '05.images.sql');
 create_table($mydb, 'html_docs', '06.html_docs.sql');
 create_table($mydb, 'file_docs', '07.file_docs.sql');
+create_table($mydb, 'user_categories', '08.user_categories.sql');
 
 // Cerrar la conexión
 $mydb->close();

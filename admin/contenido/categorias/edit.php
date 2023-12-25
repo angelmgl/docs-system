@@ -33,20 +33,6 @@ if ($category === null) {
     exit;
 }
 
-// consulta de negocios
-$business_stmt = $mydb->prepare("SELECT * FROM businesses WHERE is_active = 1");
-$business_stmt->execute();
-$business_result = $business_stmt->get_result();
-
-$businesses = [];
-if ($business_result->num_rows > 0) {
-    while ($row = $business_result->fetch_assoc()) {
-        $businesses[] = $row;
-    }
-}
-
-$business_stmt->close();
-
 $mydb->close();
 ?>
 
@@ -82,6 +68,7 @@ $mydb->close();
             ?>
             <form class="custom-form" action="./actions/update_category.php" method="POST">
                 <input type="hidden" id="category_id" name="category_id" value="<?php echo $category['id']; ?>">
+                <input type="hidden" id="business_id" name="business_id" value="<?php echo $category['business_id']; ?>">
 
                 <div class="data-section">
                     <div class="input-wrapper text-input">
@@ -96,18 +83,14 @@ $mydb->close();
                 </div>
 
                 <div class="manage-section">
-                    <div class="input-wrapper select-input">
-                        <label for="business_id">Seleccionar empresa:</label>
-                        <select id="business_id" name="business_id">
-                            <?php foreach ($businesses as $business) { ?>
-                                <option value="<?php echo $business["id"] ?>" <?php echo $category['business_id'] === $business['id'] ? 'selected' : '' ?>>
-                                    <?php echo $business["name"] ?>
-                                </option>
-                            <?php } ?>
-                        </select>
-                    </div>
-
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Categoría">
+
+                    <a 
+                        href="<?php echo BASE_URL . "/admin/contenido/categorias/users.php?business_id=" . $category['business_id'] . "&category_id=" . $category['id'] ?>" 
+                        class="change-password"
+                    >
+                        Gestionar acceso
+                    </a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
