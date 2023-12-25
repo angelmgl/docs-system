@@ -80,7 +80,10 @@ $mydb->close();
     <section class="container py px">
         <div class="admin-bar">
             <h1>Administrar Usuarios</h1>
-            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/business/usuarios/add.php">Añadir usuario</a>
+            <div>
+                <a class="btn btn-primary" href="<?php echo BASE_URL ?>/business/usuarios/add.php">Añadir usuario</a>
+                <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/business/usuarios/block.php">Añadir en bloque</a>
+            </div>
         </div>
 
         <?php

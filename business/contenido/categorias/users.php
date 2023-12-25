@@ -39,7 +39,7 @@ if ($category === null) {
 $role = "analyst";
 
 // Preparar la consulta
-$user_stmt = $mydb->prepare("SELECT full_name, id, profile_picture, username FROM users WHERE business_id = ? AND role = ?");
+$user_stmt = $mydb->prepare("SELECT full_name, id, profile_picture, username FROM users WHERE business_id = ? AND role = ? AND is_active = 1");
 $user_stmt->bind_param("is", $business_id, $role);
 
 // Ejecutar la consulta

@@ -25,7 +25,7 @@ $my_business = $_SESSION['business_id'];
     <main class="container py px">
         <div class="admin-bar">
             <h1>Agregar usuario</h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/usuarios">Regresar</a>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/business/usuarios">Regresar</a>
         </div>
 
         <section>

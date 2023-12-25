@@ -89,7 +89,7 @@ $stmt->close();
                     </div>
 
                     <div class="input-wrapper select-input">
-                        <label for="role">Seleccionar rol:</label>
+                        <label for="role">Seleccionar rol: <span class="required">*</span></label>
                         <select id="role" name="role" required>
                             <option value="" selected disabled>Selecciona...</option>
                             <option value="analyst">Analista</option>
@@ -99,8 +99,8 @@ $stmt->close();
                     </div>
 
                     <div class="input-wrapper select-input">
-                        <label for="business_id">Seleccionar empresa:</label>
-                        <select id="business_id" name="business_id">
+                        <label for="business_id">Seleccionar empresa: <span class="required">*</span></label>
+                        <select id="business_id" name="business_id" required>
                             <option value="" selected disabled>Selecciona...</option>
                             <?php foreach ($businesses as $business) { ?>
                                 <option value="<?php echo $business["id"] ?>"><?php echo $business["name"] ?></option>
