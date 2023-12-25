@@ -85,6 +85,13 @@ $mydb->close();
 
                 <div class="manage-section">
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Categoría">
+
+                    <a 
+                        href="<?php echo BASE_URL . "/business/contenido/categorias/users.php?category_id=" . $category['id'] ?>" 
+                        class="change-password"
+                    >
+                        Gestionar acceso
+                    </a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
