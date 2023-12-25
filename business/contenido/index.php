@@ -10,16 +10,35 @@ session_start();
 verifyRoles(['admin', 'analyst']);
 
 $my_business = $_SESSION['business_id'];
+$my_id = $_SESSION['user_id'];
 
 $categories = [];
 
-if ($my_business) {
-    $sql = "SELECT * FROM businesses";
+if ($my_business && $_SESSION["role"] === 'admin') {
     $stmt = $mydb->prepare("SELECT * FROM categories WHERE business_id = ?");
     $stmt->bind_param("i", $my_business);
     $stmt->execute();
     $result = $stmt->get_result();
 
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $categories[] = $row;
+        }
+    }
+
+    $stmt->close();
+} elseif ($my_business && $_SESSION["role"] === 'analyst') {
+    $stmt = $mydb->prepare("
+        SELECT c.* 
+        FROM categories c
+        JOIN user_categories uc ON c.id = uc.category_id
+        WHERE c.business_id = ? AND uc.user_id = ?
+    ");
+    $stmt->bind_param("ii", $my_business, $my_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    $categories = [];
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $categories[] = $row;
