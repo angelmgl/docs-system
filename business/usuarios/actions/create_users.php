@@ -40,7 +40,7 @@ if (isset($_FILES['csv_file'])) {
                 $username = $data[0];
                 $full_name = $data[1];
                 $email = $data[2];
-                $password = password_hash($data[3], PASSWORD_DEFAULT); // Asumiendo que la contraseña ya está en un formato seguro
+                $password = password_hash($data[3], PASSWORD_DEFAULT); 
 
                 // Insertar usuario en la base de datos
                 $stmt = $mydb->prepare("INSERT INTO users (username, full_name, email, password, role, business_id, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -55,6 +55,7 @@ if (isset($_FILES['csv_file'])) {
                     handle_form_error("Error al crear el usuario: " . $e->getMessage(), array(), "/business/usuarios/block.php");
                     exit; 
                 }
+                $users_created_count++;
 
                 $stmt->close();
             }
