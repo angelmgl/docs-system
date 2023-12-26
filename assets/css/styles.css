@@ -23,6 +23,16 @@ body {
     --black-color: #232323;
 }
 
+.link {
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: 0.6s;
+}
+
+.link:hover {
+    color: var(--primary-color-dark);
+}
+
 .hidden {
     display: none!important;
 }
@@ -678,17 +688,17 @@ body {
     width: 100px;
 }
 
-.business-table .status {
+.status {
     padding: 4px 10px;
     border-radius: 4px;
     color: var(--white-color);
 }
 
-.business-table .status.active {
+.status.active {
     background: var(--primary-color);
 }
 
-.business-table .status.inactive {
+.status.inactive {
     background: var(--danger-color);
 }
 
@@ -1044,4 +1054,13 @@ body {
 
 .user-mini-form .user-info .logo {
     margin-right: 10px;
+}
+
+/*  DASHBOARD STYLES */
+
+.panel {
+    margin: 20px 0;
+    padding: 20px;
+    border: 1px solid var(--off-white-dark);
+    border-radius: 15px;
 }

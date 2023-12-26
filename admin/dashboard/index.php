@@ -2,6 +2,8 @@
 
 require '../../config/config.php';
 require '../../helpers/auth.php';
+require '../../helpers/dates.php';
+require '../../helpers/business.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -21,10 +23,15 @@ verifyRoles(['super']);
 <body>
     <?php include '../../components/admin/header.php' ?>
     <section class="container py px">
-        <h1>Bienvenido al App Admin</h1>
+        <h1>Bienvenido <?php echo $_SESSION['full_name'] ?> al App Admin</h1>
         <p>
-            <?php echo $_SESSION['username'] . " - " . $_SESSION['role'] ?>
+            @<?php echo $_SESSION['username'] . " - Super Administrador" ?>
         </p>
+
+        <div class="grid cols-2" style="align-items: start;">
+            <?php include('./panels/businesses_near_expiration.php') ?>
+            <?php include('./panels/expired_businesses.php') ?>
+        </div>
     </section>
 </body>
 
