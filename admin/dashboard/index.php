@@ -31,6 +31,9 @@ verifyRoles(['super']);
         <div class="grid cols-2" style="align-items: start;">
             <?php include('./panels/businesses_near_expiration.php') ?>
             <?php include('./panels/expired_businesses.php') ?>
+            <?php include('./panels/users_per_business.php') ?>
+            <?php include('./panels/docs_per_business.php') ?>
+            <?php include('./panels/users_per_last_login.php') ?>
         </div>
     </section>
 </body>
