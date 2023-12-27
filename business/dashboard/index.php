@@ -11,6 +11,7 @@ session_start();
 verifyRoles(['admin', 'analyst']);
 
 $my_business = $_SESSION["business_id"];
+$my_id = $_SESSION["user_id"];
 
 ?>
 
@@ -31,9 +32,15 @@ $my_business = $_SESSION["business_id"];
         </p>
 
         <div class="grid cols-2" style="align-items: start;">
-            <?php include('./panels/business_expiration.php') ?>
-            <?php include('./panels/users_count.php') ?>
-            <?php include('./panels/docs_count.php') ?>
+            <?php
+            if ($_SESSION['role'] === 'admin') {
+                include('./panels/business_expiration.php');
+                include('./panels/users_count.php');
+                include('./panels/docs_count.php');
+            } else {
+                include('./panels/analyst_categories.php');
+            }
+            ?>
         </div>
     </section>
 </body>
