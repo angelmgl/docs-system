@@ -18,3 +18,10 @@ function format_date($date, $show_time = true) {
 
     return $formatter->format($d);
 }
+
+function days_until_date($date) {
+    $target_date = new DateTime($date);
+    $current_date = new DateTime();
+    $difference = $current_date->diff($target_date);
+    return $difference->days;
+}

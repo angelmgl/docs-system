@@ -131,6 +131,13 @@ body {
     border-radius: 8px;
 }
 
+.warning {
+    background-color: var(--accent-color);
+    color: var(--white-color);
+    padding: 7px 25px;
+    border-radius: 8px;
+}
+
 /* LOGIN PAGE */
 #login-page {
     height: 100vh;
