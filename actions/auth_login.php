@@ -15,32 +15,55 @@ $stmt->execute();
 $result = $stmt->get_result();
 $user = $result->fetch_assoc();
 
-// Verificar si el usuario existe y, si es así, si la contraseña es correcta.
-if ($user && password_verify($password, $user['password'])) {
-    // La contraseña es correcta y el usuario existe.
+function set_session($user)
+{
     $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $username;
+    $_SESSION['username'] = $user['username'];
     $_SESSION['full_name'] = $user['full_name'];
     $_SESSION['business_id'] = $user['business_id'];
     $_SESSION['role'] = $user['role'];
     $_SESSION['profile_picture'] = $user['profile_picture'];
+}
+
+// Verificar si el usuario existe y, si es así, si la contraseña es correcta.
+if ($user && password_verify($password, $user['password'])) {
+
+    if ($user['role'] === 'super') {
+        // si el usuario es superadmin redirigimos al admin de la app
+        set_session($user);
+        header("Location: " . BASE_URL . "/admin/dashboard");
+        exit;
+    } else if (in_array($user['role'], ['admin', 'analyst']) && !!$user['business_id']) {
+        // Si es admin o analyst, verifica el estado del negocio.
+        $business_stmt = $mydb->prepare("SELECT is_active FROM businesses WHERE id = ?");
+        $business_stmt->bind_param("i", $user['business_id']);
+        $business_stmt->execute();
+        $business_result = $business_stmt->get_result();
+        $business = $business_result->fetch_assoc();
+
+        if ($business && $business['is_active']) {
+            // El negocio está activo. Continuar con el inicio de sesión.
+            set_session($user);
+            header("Location: " . BASE_URL . "/business/dashboard");
+            exit;
+        } else {
+            // Negocio inactivo. Redirigir a la página de expiración.
+            $_SESSION['this_role'] = $user['role'];
+            header("Location: " . BASE_URL . "/expired.php");
+            exit;
+        }
+    } else {
+        // El negocio no está asignado o el rol del usuario no es válido.
+        $_SESSION['error'] = "El usuario no tiene un negocio asignado o el rol no es válido.";
+        header("Location: " . BASE_URL . "/login.php");
+        exit;
+    }
 
     update_last_login($mydb, $user['id']);
 
     $stmt->close();
     $mydb->close();
 
-    // Si es superadmin, se establece el rol y se redirige al dashboard de superadmin.
-    if ($user['role'] === 'super') {
-        header("Location: " . BASE_URL . "/admin/dashboard");
-    } else if (!!$user['business_id']) {
-        // Si no es superadmin y tiene un negocio, redirigimos al Welcome para que seleccione una empresa
-        header("Location: " . BASE_URL . "/business/dashboard");
-    } else {
-        // Si el negocio no está asignado
-        $_SESSION['error'] = "El usuario no tiene un negocio asignado.";
-        header("Location: " . BASE_URL . "/login.php");
-    }
     exit();
 } else {
     $stmt->close();
