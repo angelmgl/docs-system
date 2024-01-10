@@ -3,7 +3,7 @@
 require '../../../config/config.php';
 require '../../../helpers/forms.php';
 require '../../../helpers/auth.php';
-require '../../../helpers/mails.php';
+require '../../../helpers/notifications.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -52,15 +52,7 @@ try {
         $stmt->close();
         $mydb->close();
 
-        $pw = $_POST['password'];
-        $subject = "Has sido registrado en " . APP_NAME; 
-        $user_email = $email;
-        $user_name = $full_name;
-        $message = "Ahora puedes iniciar sesión con los siguientes detalles:<br><br>Nombre de usuario: $username<br>Contraseña: $pw"; 
-        $button_url = BASE_URL . "/login.php";
-        $button_text =  "Iniciar sesión";
-        $recommendation = "Ingresa a tu cuenta, completa tu perfil, actualiza tu contraseña y comienza a trabajar.";
-        send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
+        user_created_notification($_POST['password'], $email, $full_name, $username);
 
         header("Location: " . BASE_URL . "/admin/usuarios");
         exit;

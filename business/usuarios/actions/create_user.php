@@ -3,6 +3,7 @@
 require '../../../config/config.php';
 require '../../../helpers/forms.php';
 require '../../../helpers/auth.php';
+require '../../../helpers/notifications.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -52,6 +53,8 @@ try {
         // Cerrar la sentencia y la conexión antes de redirigir
         $stmt->close();
         $mydb->close();
+
+        user_created_notification($_POST['password'], $email, $full_name, $username);
 
         header("Location: " . BASE_URL . "/business/usuarios");
         exit;

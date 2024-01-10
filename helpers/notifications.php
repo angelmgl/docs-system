@@ -1,6 +1,6 @@
 <?php
 
-require '../helpers/mails.php';
+require __DIR__ . '/mails.php';
 
 function recover_password_notification($email, $full_name, $reset_code) {
     $subject = "Recupera tu contraseña en " . APP_NAME;
@@ -13,3 +13,13 @@ function recover_password_notification($email, $full_name, $reset_code) {
     send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
 }
 
+function user_created_notification($password, $email, $full_name, $username) {
+    $subject = "Has sido registrado en " . APP_NAME; 
+    $user_email = $email;
+    $user_name = $full_name;
+    $message = "Ahora puedes iniciar sesión con los siguientes detalles:<br><br>Nombre de usuario: $username<br>Contraseña: $password"; 
+    $button_url = BASE_URL . "/login.php";
+    $button_text =  "Iniciar sesión";
+    $recommendation = "Ingresa a tu cuenta, completa tu perfil, actualiza tu contraseña y comienza a trabajar.";
+    send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
+}
