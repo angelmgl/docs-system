@@ -2,7 +2,8 @@
 
 require '../config/config.php';
 require '../helpers/users.php';
-require '../helpers/mails.php';
+require '../helpers/notifications.php';
+
 session_start();
 
 $email = $_POST['email'];
@@ -25,14 +26,7 @@ if ($user) {
     $r_stmt->execute();
     $r_stmt->close();
 
-    $subject = "Recupera tu contraseña en " . APP_NAME;
-    $user_email = $user["email"];
-    $user_name = $user["full_name"];
-    $message = "Para cambiar tu contraseña, ingresa al enlace a continuación y verás un formulario para establecer una nueva. Recuerda guardarla en un lugar seguro.";
-    $button_url = BASE_URL . "/change-password.php?code=" . $reset_code;
-    $button_text = "Recuperar contraseña";
-    $recommendation = "<span style=\"font-size: 12px\">Sino puedes ingresar con el botón anterior, copia y pega el siguiente enlace en tu navegador: $button_url</span>";
-    send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
+    recover_password_notification($user["email"], $user["full_name"], $reset_code);
 
     $mydb->close();
 
