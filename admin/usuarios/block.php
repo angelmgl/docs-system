@@ -48,8 +48,10 @@ $stmt->close();
             <form class="custom-form" action="./actions/create_users.php" method="POST" enctype="multipart/form-data">
                 <div class="data-section">
                     <p>
-                        Para crear usuarios en bloque, necesitas completar un archivo CSV con las columnas: <strong>username, full_name, email y password.</strong>
-                        Puedes crear las tablas en cualquier Excel o SpreadSheet y luego descargar como CSV.
+                        Para crear usuarios en bloque, necesitas completar un archivo CSV con las columnas: <strong>username, full_name, y email.</strong>
+                        La contraseña se establecerá de manera aleatoria automaticamente.
+                    </p>
+                    <p>Puedes crear las tablas en cualquier Excel o SpreadSheet y luego descargar como CSV.
                         <a class="change-password" href="<?php echo BASE_URL ?>/assets/img/csv_example.png" target="_blank">Ver ejemplo</a>
                     </p>
 

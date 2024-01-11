@@ -3,6 +3,8 @@
 require '../../../config/config.php';
 require '../../../helpers/forms.php';
 require '../../../helpers/auth.php';
+require '../../../helpers/users.php';
+require '../../../helpers/notifications.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -40,7 +42,10 @@ if (isset($_FILES['csv_file'])) {
                 $username = $data[0];
                 $full_name = $data[1];
                 $email = $data[2];
-                $password = password_hash($data[3], PASSWORD_DEFAULT); 
+                $random = generate_reset_code();
+                $password = password_hash($random, PASSWORD_DEFAULT); 
+
+                user_created_notification($random, $email, $full_name, $username);
 
                 // Insertar usuario en la base de datos
                 $stmt = $mydb->prepare("INSERT INTO users (username, full_name, email, password, role, business_id, is_active) VALUES (?, ?, ?, ?, ?, ?, ?)");
