@@ -23,3 +23,14 @@ function user_created_notification($password, $email, $full_name, $username) {
     $recommendation = "Ingresa a tu cuenta, completa tu perfil, actualiza tu contraseña y comienza a trabajar.";
     send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
 }
+
+function user_assigned_notification($full_name, $email, $category_name, $category_id) {
+    $subject = "Te han asignado la categoría " . $category_name; 
+    $user_email = $email;
+    $user_name = $full_name;
+    $message = "Los administradores de tu negocio te han asignado una categoría nueva: " . $category_name; 
+    $button_url = BASE_URL . "/business/contenido/categorias/?category_id=" . $category_id;
+    $button_text =  "Ver categoría";
+    $recommendation = "Ingresa a tu cuenta para comenzar a trabajar con tus nuevos documentos.";
+    send_notification($subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation);
+}

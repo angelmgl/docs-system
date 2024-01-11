@@ -3,6 +3,7 @@
 require '../../../../config/config.php';
 require '../../../../helpers/forms.php';
 require '../../../../helpers/auth.php';
+require '../../../../helpers/notifications.php';
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -23,6 +24,14 @@ if (!$insert_stmt->execute()) {
 $insert_stmt->close();
 
 $mydb->close();
+
+// datos para el email
+$user_name = $_POST['user_name'];
+$user_email = $_POST['user_email'];
+$category_name = $_POST['category_name'];
+$category_id = $_POST['category_id'];
+
+user_assigned_notification($user_name, $user_email, $category_name, $category_id);
 
 $_SESSION['success'] = "Usuario asignado a la categoría exitosamente";
 header("Location: " . BASE_URL . "/business/contenido/categorias/users.php?category_id=$category_id");

@@ -39,7 +39,7 @@ if ($category === null) {
 $role = "analyst";
 
 // Preparar la consulta
-$user_stmt = $mydb->prepare("SELECT full_name, id, profile_picture, username FROM users WHERE business_id = ? AND role = ? AND is_active = 1");
+$user_stmt = $mydb->prepare("SELECT full_name, id, profile_picture, username, email FROM users WHERE business_id = ? AND role = ? AND is_active = 1");
 $user_stmt->bind_param("is", $business_id, $role);
 
 // Ejecutar la consulta
@@ -158,6 +158,9 @@ foreach ($users as $user) {
                                 <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id'] ?>" />
                                 <input type="hidden" id="category_id" name="category_id" value="<?php echo $category['id']; ?>">
                                 <input type="hidden" id="business_id" name="business_id" value="<?php echo $category['business_id']; ?>">
+                                <input type="hidden" id="user_name" name="user_name" value="<?php echo $user['full_name'] ?>" />
+                                <input type="hidden" id="user_email" name="user_email" value="<?php echo $user['email'] ?>" />
+                                <input type="hidden" id="category_name" name="category_name" value="<?php echo $category['name'] ?>" />
 
                                 <div class="logo" style="background-image: url(<?php echo get_profile_picture($user) ?>)"></div>
                                 <div>
