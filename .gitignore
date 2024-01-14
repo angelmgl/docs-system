@@ -19,3 +19,4 @@ uploads/**/*.ods
 uploads/**/*.pptx
 uploads/**/*.ppt
 uploads/**/*.odp
+.idea/

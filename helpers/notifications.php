@@ -36,7 +36,7 @@ function user_assigned_notification($full_name, $email, $category_name, $categor
 }
 
 function expiring_soon_notification($full_name, $email, $business_name, $days_to_expire, $expiration_date) {
-    $subject = $business_name . ": Faltan " . $days_to_expire . " días para que tu suscripción expire ";
+    $subject = $business_name . ": Faltan " . $days_to_expire . " días para que tu suscripción expire";
     $user_name = $full_name;
     $message = "No olvides renovar tu suscripción antes del " . $expiration_date ." para que tu empresa: "
         . $business_name . " siga siendo accesible en " . APP_NAME;
@@ -45,5 +45,17 @@ function expiring_soon_notification($full_name, $email, $business_name, $days_to
     $recommendation = "Una vez que tu suscripción termine, ni tú ni tus colaboradores tendrán acceso a nuestro sistema. 
     Pero no te preocupes, tus datos están seguros, en cuanto reanudes tu suscripción podrás volver a ingresar
     para seguir trabajando.";
+    send_notification($subject, $email, $user_name, $message, $button_url, $button_text, $recommendation);
+}
+
+function expired_notification($full_name, $email, $business_name, $expiration_date) {
+    $subject = $business_name . ": reanuda tu suscripción a " . APP_NAME;
+    $user_name = $full_name;
+    $message = "Reanuda tu suscripción que expiró el " . $expiration_date ." para que tu empresa: "
+        . $business_name . " siga siendo accesible en " . APP_NAME;
+    $button_url = CONTACT_URL;
+    $button_text =  "Reanudar ahora";
+    $recommendation = "Tu suscripción terminó, pero no te preocupes, tus datos están seguros. En cuanto reanudes tu suscripción, 
+    tu equipo y vos podrán volver a ingresar para seguir trabajando.";
     send_notification($subject, $email, $user_name, $message, $button_url, $button_text, $recommendation);
 }
