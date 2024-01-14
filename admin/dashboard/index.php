@@ -23,7 +23,7 @@ verifyRoles(['super']);
 <body>
     <?php include '../../components/admin/header.php' ?>
     <section class="container py px">
-        <h1>Bienvenido <?php echo $_SESSION['full_name'] ?> al App Admin</h1>
+        <h1>Bienvenido <?php echo $_SESSION['full_name'] ?></h1>
         <p>
             @<?php echo $_SESSION['username'] . " - Super Administrador" ?>
         </p>

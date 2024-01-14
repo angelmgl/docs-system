@@ -26,6 +26,7 @@ if (isset($_SESSION['role'])) {
 <body>
     <main id="login-page">
         <div class="form-container">
+            <img class="app-logo" alt="Analytico" src="<?php echo BASE_URL ?>/assets/img/analytico.svg" />
             <h1>Inicia sesión</h1>
             <form id="login-form" action="./actions/auth_login.php" method="POST">
                 <div class="fields-container">

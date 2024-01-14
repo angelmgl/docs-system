@@ -1,26 +1,46 @@
+@font-face {
+    font-family: "Graphik";
+    src: url("assets/fonts/Graphik-Regular-Web.woff2") format("woff2");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "Graphik";
+    src: url("assets/fonts/Graphik-Semibold-Web.woff2") format("woff2");
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "Graphik";
+    src: url("assets/fonts/Graphik-Bold-Web.woff2") format("woff2");
+    font-weight: 700;
+}
+
 * {
     box-sizing: border-box;
-    font-family: "Lato", sans-serif;
+    font-family: "Graphik", sans-serif;
+}
+
+:root {
+    --bg-color: #021320;
+    --primary-color: #42bbbf;
+    --primary-color-hover: #54eef2;
+    --secondary-color: #36bffa;
+    --secondary-color-dark: #0ba5ec;
+    --accent-color: #54eef2;
+    --danger-color: #f97066;
+    --danger-color-dark: #f04438;
+    --off-white: #f2f4f7;
+    --off-white-dark: #eaecf0;
+    --white-color: #fcfcfd;
+    --gray-color: #98a2b3;
+    --black-color: #021320;
 }
 
 body {
     margin: 0;
     padding: 0;
-}
-
-:root {
-    --primary-color: #3498db;
-    --primary-color-dark: #2980b9;
-    --secondary-color: #1abc9c;
-    --secondary-color-dark: #16a085;
-    --accent-color: #f1c40f;
-    --danger-color: #e8776b;
-    --danger-color-dark: #e74c3c;
-    --off-white: #f3f3f3;
-    --off-white-dark: #c4cfcf;
-    --white-color: #ffffff;
-    --gray-color: #a5a5a5;
-    --black-color: #232323;
+    background: var(--white-color);
 }
 
 .link {
@@ -30,11 +50,11 @@ body {
 }
 
 .link:hover {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 .hidden {
-    display: none!important;
+    display: none !important;
 }
 
 .container {
@@ -67,17 +87,16 @@ body {
 }
 
 .btn {
+    display: inline-block;
     padding: 8px 20px;
     border: none;
-    text-transform: uppercase;
-    border-radius: 8px;
+    border-radius: 6px;
     cursor: pointer;
     text-decoration: none;
-    border: 1px solid var(--gray-color);
+    border: 2px solid var(--gray-color);
     transition: all 0.4s;
     font-size: 16px;
     line-height: 1em;
-    font-family: "Lato", sans-serif;
 }
 
 .btn.btn-primary {
@@ -87,14 +106,14 @@ body {
 }
 
 .btn.btn-primary:hover {
-    background: var(--primary-color-dark);
-    border-color: var(--primary-color-dark);
+    background: var(--primary-color-hover);
+    border-color: var(--primary-color-hover);
 }
 
 .btn.btn-secondary {
     background: var(--off-white);
-    color: var(--primary-color-dark);
-    border-color: var(--primary-color-dark);
+    color: var(--bg-color);
+    border-color: var(--bg-color);
 }
 
 .btn.btn-secondary:hover {
@@ -140,16 +159,38 @@ body {
 
 /* LOGIN PAGE */
 #login-page {
+    position: relative;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-image: url('https://analytico.com.py/wp-content/uploads/2023/11/analytico_281584632.jpg');
+    background-position: center center;
+    background-size: cover;
+    color: var(--white-color);
+}
+
+#login-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--bg-color);
+    opacity: 0.45;
+}
+
+#login-page .app-logo {
+    margin-bottom: 40px;
 }
 
 #login-page .form-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    z-index: 99;
 }
 
 #login-page #login-form {
@@ -170,7 +211,7 @@ body {
 /* ADMIN HEADER */
 #admin-header {
     padding: 20px 0;
-    background: var(--primary-color);
+    background: var(--bg-color);
 }
 
 #admin-header .container,
@@ -180,11 +221,8 @@ body {
     align-items: center;
 }
 
-#admin-header .app-name {
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 24px;
-    color: var(--white-color);
+#admin-header .app-logo {
+    max-width: 200px;
 }
 
 #admin-header .nav-link {
@@ -298,7 +336,7 @@ body {
     background: var(--primary-color);
 }
 .action.edit:hover {
-    background: var(--primary-color-dark);
+    background: var(--primary-color-hover);
 }
 .action.delete {
     background: var(--danger-color);
@@ -439,7 +477,7 @@ body {
 }
 
 .custom-form .change-password:hover {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 .custom-form .date-field {
@@ -466,7 +504,7 @@ body {
 }
 
 .custom-form .date-field button:hover {
-    background: var(--primary-color-dark);
+    background: var(--primary-color-hover);
 }
 
 .table-actions {
@@ -641,7 +679,7 @@ body {
 }
 
 .business-table thead {
-    background: var(--primary-color);
+    background: var(--bg-color);
     color: var(--white-color);
 }
 
@@ -766,7 +804,7 @@ body {
     padding: 0 15px;
     border-radius: 7px;
     background-color: #fff;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
     z-index: 99;
 }
 
@@ -944,7 +982,7 @@ body {
     font-weight: 600;
 }
 .document-title a:hover {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 .add-image {
@@ -962,7 +1000,7 @@ body {
 
 .add-image:hover {
     background: var(--off-white-dark);
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 /* pagina de archivos file */
@@ -989,7 +1027,7 @@ body {
 }
 
 .file-preview .file-actions a:hover {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 /* página de la empresa */
@@ -1029,7 +1067,7 @@ body {
 }
 
 .edit-business:hover {
-    color: var(--primary-color-dark);
+    color: var(--primary-color-hover);
 }
 
 /* USER MINI FORM */

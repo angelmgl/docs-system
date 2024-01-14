@@ -1,12 +1,12 @@
 <header id="admin-header">
     <div class="container px">
-        <span class="app-name">SISTEMA</span>
+        <img class="app-logo" alt="Analytico" src="<?php echo BASE_URL?>/assets/img/analytico.svg" />
         <nav>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/dashboard" ?>">Dashboard</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/empresas" ?>">Empresas</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/usuarios" ?>">Usuarios</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/contenido" ?>">Contenido</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/admin/ajustes" ?>">Ajustes</a>
+            <!-- <a class="nav-link" href="<?php echo BASE_URL . "/admin/ajustes" ?>">Ajustes</a> -->
             <div 
                 class="profile-btn" 
                 style="background-image: url(<?php echo $_SESSION['profile_picture'] ? BASE_URL . $_SESSION['profile_picture'] : BASE_URL . '/assets/img/avatar.webp'; ?>)"
