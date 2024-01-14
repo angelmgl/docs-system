@@ -49,7 +49,7 @@ function expiring_soon_notification($full_name, $email, $business_name, $days_to
 }
 
 function expired_notification($full_name, $email, $business_name, $expiration_date) {
-    $subject = $business_name . ": reanuda tu suscripción a " . APP_NAME;
+    $subject = $business_name . ": tu suscripción a " . APP_NAME . " terminó";
     $user_name = $full_name;
     $message = "Reanuda tu suscripción que expiró el " . $expiration_date ." para que tu empresa: "
         . $business_name . " siga siendo accesible en " . APP_NAME;
