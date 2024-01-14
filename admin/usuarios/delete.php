@@ -45,7 +45,7 @@ if ($user === null) {
 
 <body>
     <?php include '../../components/admin/header.php'; ?>
-    <main class="container px py" id="remove-user">
+    <main class="container px py content" id="remove-user">
         <h1>¿Estás seguro de que quieres eliminar a <?php echo $user["full_name"] ?>?</h1>
 
         <p>

@@ -56,7 +56,7 @@ if ($category === null) {
 
 <body>
     <?php include '../../../components/admin/header.php'; ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <div>
                 <h1>Agregar Documento</h1>

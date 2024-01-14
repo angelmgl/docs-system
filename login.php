@@ -24,8 +24,9 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body>
-    <main id="login-page">
+    <main id="login-page" class="content">
         <div class="form-container">
+            <img class="app-logo" src="<?php echo BASE_URL ?>/assets/img/logo.svg" alt="Grupo Delta" />
             <h1>Inicia sesión</h1>
             <form id="login-form" action="./actions/auth_login.php" method="POST">
                 <div class="fields-container">

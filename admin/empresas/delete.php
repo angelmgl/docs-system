@@ -45,7 +45,7 @@ if ($business === null) {
 
 <body>
     <?php include '../../components/admin/header.php'; ?>
-    <main class="container px py" id="remove-business">
+    <main class="container px py content" id="remove-business">
         <h1>¿Estás seguro de que quieres eliminar <?php echo $business["name"] ?>?</h1>
 
         <p>

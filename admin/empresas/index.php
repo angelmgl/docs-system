@@ -68,7 +68,7 @@ $name_value_display = str_replace('%', '', $name_value);
 
 <body>
     <?php include '../../components/admin/header.php' ?>
-    <section class="container py px">
+    <section class="container py px content">
         <div class="admin-bar">
             <h1>Administrar Empresas</h1>
             <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/empresas/add.php">Añadir empresa</a>

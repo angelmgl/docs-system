@@ -46,7 +46,7 @@ if ($user === null) {
 <body>
     <?php include '../../components/admin/header.php'; ?>
 
-    <main class="container px py">
+    <main class="container px py content">
         <div class="admin-bar">
             <h1>Cambiar contraseña de <?php echo $user['full_name'] ?></h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/usuarios/edit.php?username=<?php echo $username ?>">Volver</a>

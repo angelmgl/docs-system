@@ -30,7 +30,7 @@ if (strlen($email) <= 0) {
 </head>
 
 <body>
-    <main id="login-page">
+    <main id="login-page" class="content">
         <div class="form-container">
             <h1>¡Enlace enviado!</h1>
             <p style="max-width: 450px;">

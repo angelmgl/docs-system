@@ -24,7 +24,7 @@ if (isset($_SESSION['role'])) {
 </head>
 
 <body>
-    <main id="login-page">
+    <main id="login-page" class="content">
         <div class="form-container">
             <h1>Recuperar contraseña</h1>
             <p style="max-width: 400px; text-align: center; margin-bottom: 40px;">

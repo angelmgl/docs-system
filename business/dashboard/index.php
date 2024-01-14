@@ -25,7 +25,7 @@ $my_id = $_SESSION["user_id"];
 
 <body>
     <?php include '../../components/business/header.php' ?>
-    <section class="container py px">
+    <section class="container py px content">
         <h1>Bienvenido <?php echo $_SESSION['full_name'] ?> al App Admin</h1>
         <p>
             @<?php echo $_SESSION['username'] . " - " . ($_SESSION['role'] === 'admin' ? 'Administrador' : 'Analista') ?>

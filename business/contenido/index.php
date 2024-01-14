@@ -62,7 +62,7 @@ $mydb->close();
 
 <body>
     <?php include '../../components/business/header.php' ?>
-    <section class="container py px">
+    <section class="container py px content">
         <div class="admin-bar">
             <h1>Administrar Contenido</h1>
         </div>

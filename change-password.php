@@ -40,7 +40,7 @@ $mydb->close();
 </head>
 
 <body>
-    <main id="login-page">
+    <main id="login-page" class="content">
         <div class="form-container">
             <h1>Cambiar contraseña</h1>
             <?php if ($reset_code) { ?>

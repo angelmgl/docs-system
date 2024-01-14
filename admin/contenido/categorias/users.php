@@ -94,7 +94,7 @@ foreach ($users as $user) {
 
 <body>
     <?php include '../../../components/admin/header.php'; ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <h1>Otorgar acceso a la categoría <?php echo $category["name"] ?></h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/admin/contenido/categorias/edit.php?category_id=<?php echo $category["id"] ?>">Regresar</a>

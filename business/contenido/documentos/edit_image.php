@@ -90,7 +90,7 @@ if ($document === null) {
 
 <body>
     <?php include '../../../components/business/header.php'; ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <div>
                 <h1>Editar documento</h1>

@@ -94,7 +94,7 @@ $mydb->close();
 
 <body>
     <?php include '../../../components/business/header.php'; ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <h1><?php echo $category['name']; ?></h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/business/contenido">Regresar</a>
@@ -127,7 +127,7 @@ $mydb->close();
                 <form method="GET" class="custom-form grid cols-2" style="max-width: 50%; margin-top: 0">
                     <input type="hidden" name="category_id" value="<?php echo $category_id ?>" />
                     <div class="input-wrapper select-input">
-                        <label for="doc_type">Seleccionar tipo de documento:</label>
+                        <label for="doc_type">Tipo de documento:</label>
                         <select id="doc_type" name="doc_type">
                             <option value="">Selecciona...</option>
                             <option value="html" <?php echo $doc_type_value === 'html' ? 'selected' : ''; ?>>HTML</option>

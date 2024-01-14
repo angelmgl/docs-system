@@ -1,4 +1,4 @@
-<header id="admin-header">
+<header class="content" id="admin-header">
     <div class="container px">
         <span class="app-name">SISTEMA</span>
         <nav>
@@ -6,7 +6,7 @@
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/empresas" ?>">Empresas</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/usuarios" ?>">Usuarios</a>
             <a class="nav-link" href="<?php echo BASE_URL . "/admin/contenido" ?>">Contenido</a>
-            <a class="nav-link" href="<?php echo BASE_URL . "/admin/ajustes" ?>">Ajustes</a>
+            <!-- <a class="nav-link" href="<?php echo BASE_URL . "/admin/ajustes" ?>">Ajustes</a> -->
             <div 
                 class="profile-btn" 
                 style="background-image: url(<?php echo $_SESSION['profile_picture'] ? BASE_URL . $_SESSION['profile_picture'] : BASE_URL . '/assets/img/avatar.webp'; ?>)"

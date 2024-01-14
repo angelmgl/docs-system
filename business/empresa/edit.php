@@ -66,7 +66,7 @@ if ($business === null) {
 
 <body>
     <?php include '../../components/business/header.php'; ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <h1>Editar empresa</h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/business/empresa">Regresar</a>

@@ -31,7 +31,7 @@ $message = $role === 'admin' ? $admin_message : $analyst_message;
 </head>
 
 <body>
-    <main id="login-page">
+    <main id="login-page" class="content">
         <div class="form-container">
             <h1><?php echo $heading ?></h1>
             <p style="max-width: 500px; text-align: center;"><?php echo $message ?></p>

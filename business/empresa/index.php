@@ -52,7 +52,7 @@ $mydb->close();
 
 <body>
     <?php include '../../components/business/header.php'; ?>
-    <main class="container px py">
+    <main class="container px py content">
         <?php
         if (isset($_SESSION['error'])) {
             echo '<p class="error">';

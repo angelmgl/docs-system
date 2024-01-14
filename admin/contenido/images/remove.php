@@ -45,7 +45,7 @@ if ($image === null) {
 
 <body>
     <?php include '../../../components/admin/header.php'; ?>
-    <main class="container px py" id="remove-image">
+    <main class="container px py content" id="remove-image">
         <img src="<?php echo BASE_URL . $image["image_path"] ?>" class="image-to-remove" />
 
         <h1>¿Estás seguro de que quieres eliminar esta imagen?</h1>

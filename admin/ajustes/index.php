@@ -20,7 +20,7 @@ verifyRoles(['super']);
 
 <body>
     <?php include '../../components/admin/header.php' ?>
-    <section class="container py px">
+    <section class="container content py px">
         <h1>Ajustes de la app</h1>
     </section>
 </body>
