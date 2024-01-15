@@ -26,16 +26,16 @@ body::before {
 }
 
 :root {
-    --primary-color: #3498db;
-    --primary-color-dark: #2980b9;
-    --secondary-color: #1abc9c;
-    --secondary-color-dark: #16a085;
+    --primary-color: #2fac66;
+    --primary-color-dark: #227f48;
+    --secondary-color: #36bffa;
+    --secondary-color-dark: #0ba5ec;
     --accent-color: #f1c40f;
-    --danger-color: #e8776b;
-    --danger-color-dark: #e74c3c;
-    --off-white: #f3f3f3;
+    --danger-color: #f97066;
+    --danger-color-dark: #f04438;
+    --off-white: #eaecf5;
     --off-white-dark: #c4cfcf;
-    --white-color: #ffffff;
+    --white-color: #fcfcfd;
     --gray-color: #a5a5a5;
     --black-color: #232323;
 }
@@ -96,12 +96,12 @@ h1 {
     padding: 8px 20px;
     border: none;
     text-transform: uppercase;
-    border-radius: 8px;
     cursor: pointer;
     text-decoration: none;
     border: 1px solid var(--gray-color);
     transition: all 0.4s;
     font-size: 16px;
+    font-weight: 600;
     line-height: 1em;
     font-family: "Montserrat", sans-serif;
 }
@@ -147,21 +147,18 @@ h1 {
     background-color: var(--danger-color);
     color: var(--white-color);
     padding: 7px 25px;
-    border-radius: 8px;
 }
 
 .success {
     background-color: var(--primary-color);
     color: var(--white-color);
     padding: 7px 25px;
-    border-radius: 8px;
 }
 
 .warning {
     background-color: var(--accent-color);
     color: var(--white-color);
     padding: 7px 25px;
-    border-radius: 8px;
 }
 
 /* LOGIN PAGE */
@@ -194,7 +191,6 @@ h1 {
     width: 300px;
     margin-bottom: 10px;
     padding: 9px 20px;
-    border-radius: 8px;
     border: none;
     background: var(--off-white);
 }
@@ -202,9 +198,10 @@ h1 {
 /* ADMIN HEADER */
 #admin-header {
     padding: 20px 0;
-    background: var(--primary-color);
+    background: var(--white-color);
     position: relative;
     z-index: 99;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.15);
 }
 
 #admin-header .container,
@@ -214,11 +211,10 @@ h1 {
     align-items: center;
 }
 
-#admin-header .app-name {
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 24px;
-    color: var(--white-color);
+#admin-header .app-logo {
+    max-width: 100%;
+    width: 120px;
+    margin-top: -10px;
 }
 
 #admin-header .nav-link {
@@ -227,14 +223,16 @@ h1 {
     border: none;
     padding: 0;
     font-size: 16px;
-    color: var(--white-color);
+    color: var(--black-color);
+    text-transform: uppercase;
+    font-weight: 600;
     cursor: pointer;
     text-decoration: none;
     transition: all 0.4s;
 }
 
 #admin-header .nav-link:hover {
-    color: var(--accent-color);
+    color: var(--primary-color);
 }
 
 /* USER ADMIN */
@@ -248,7 +246,6 @@ h1 {
 
 .user-card {
     border: 1px solid var(--primary-color);
-    border-radius: 10px;
     overflow: hidden;
     background: var(--white-color);
 }
@@ -291,7 +288,6 @@ h1 {
 
 .user-card .role {
     padding: 3px 9px;
-    border-radius: 10px;
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 600;
@@ -317,7 +313,6 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    border-radius: 5px;
     color: var(--white-color);
     cursor: pointer;
     border: none;
@@ -404,7 +399,6 @@ h1 {
     width: 30%;
     background: var(--off-white);
     padding: 20px;
-    border-radius: 10px;
 }
 
 .custom-form .input-wrapper {
@@ -433,7 +427,6 @@ h1 {
     padding: 7px 20px;
     font-size: 16px;
     border: 1px solid var(--gray-color);
-    border-radius: 5px;
 }
 
 .custom-form #profile-picture-container,
@@ -495,7 +488,6 @@ h1 {
     background: var(--primary-color);
     color: var(--white-color);
     border: none;
-    border-radius: 5px;
     cursor: pointer;
     transition: all 0.4s;
 }
@@ -518,7 +510,6 @@ h1 {
     justify-content: center;
     align-items: center;
     font-size: 14px;
-    border-radius: 5px;
     color: var(--white-color);
     cursor: pointer;
     border: none;
@@ -593,7 +584,6 @@ h1 {
     justify-content: center;
     align-items: center;
     border: 1px solid #c0c0c0;
-    border-radius: 5px;
     margin-bottom: 50px;
 }
 
@@ -676,7 +666,7 @@ h1 {
 }
 
 .business-table thead {
-    background: var(--primary-color);
+    background: var(--black-color);
     color: var(--white-color);
 }
 
@@ -732,7 +722,6 @@ h1 {
 
 .status {
     padding: 4px 10px;
-    border-radius: 4px;
     color: var(--white-color);
 }
 
@@ -800,7 +789,6 @@ h1 {
     right: 0;
     width: 200px;
     padding: 0 15px;
-    border-radius: 7px;
     background-color: #fff;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);
     z-index: 99;
@@ -834,7 +822,6 @@ h1 {
     display: flex;
     align-items: center;
     background: var(--off-white);
-    border-radius: 7px;
     padding: 10px;
 }
 
@@ -874,7 +861,6 @@ h1 {
 .category-item {
     margin: 20px 0;
     border: 1px solid var(--off-white-dark);
-    border-radius: 7px;
     overflow: hidden;
     background: var(--white-color);
 }
@@ -1006,7 +992,6 @@ h1 {
 
 .file-preview {
     background: var(--off-white);
-    border-radius: 10px;
     padding: 10px 40px;
     display: flex;
     align-items: center;
@@ -1074,7 +1059,6 @@ h1 {
 .user-mini-form {
     margin-bottom: 10px;
     padding: 10px;
-    border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1105,6 +1089,5 @@ h1 {
 .panel {
     padding: 20px;
     border: 1px solid var(--off-white-dark);
-    border-radius: 15px;
     background: var(--white-color);
 }

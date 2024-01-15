@@ -1,11 +1,7 @@
-<?php
 
-
-
-?>
 <header id="admin-header">
     <div class="container px">
-        <span class="app-name">SISTEMA</span>
+    <img class="app-logo" src="<?php echo BASE_URL ?>/assets/img/logo.svg" alt="Grupo Delta" />
         <nav>
             <a class="nav-link" href="<?php echo BASE_URL . "/business/dashboard" ?>">Dashboard</a>
             <?php if($_SESSION["role"] === "admin") { ?>
