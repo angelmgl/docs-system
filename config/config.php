@@ -16,7 +16,6 @@ if ($mydb->connect_error) {
 
 define('BASE_URL', 'http://localhost/docs-system');
 define('ROOT', __DIR__);
-define('GOOGLE_MAPS_API_KEY', 'AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0');
 define('MAIL_HOST', 'mail.urbaview.net');
 define('MAIL_USERNAME', 'my@urbaview.net');
 define('MAIL_PASSWORD', 'Zek;azHw}OOp');
