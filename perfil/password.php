@@ -50,7 +50,7 @@ if ($user === null) {
         }
     ?>
 
-    <main class="container px py">
+    <main class="container px py content">
         <div class="admin-bar">
             <h1>Cambiar mi contraseña</h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL . '/perfil'?>">Volver</a>

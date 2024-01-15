@@ -67,7 +67,7 @@ $return_url = null;
         $return_url = BASE_URL . '/business/dashboard';
     }
     ?>
-    <main class="container py px">
+    <main class="container py px content">
         <div class="admin-bar">
             <h1>Mi perfil</h1>
             <a class="btn btn-secondary" href="<?php echo $return_url ?>">Regresar</a>
