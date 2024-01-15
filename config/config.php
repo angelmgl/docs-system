@@ -16,11 +16,10 @@ if ($mydb->connect_error) {
 
 define('BASE_URL', 'http://localhost/docs-system');
 define('ROOT', __DIR__);
-define('GOOGLE_MAPS_API_KEY', 'AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0');
-define('MAIL_HOST', 'mail.urbaview.net');
-define('MAIL_USERNAME', 'my@urbaview.net');
+define('MAIL_HOST', 'mail.grupodelta.com.py');
+define('MAIL_USERNAME', 'noreply@grupodelta.com.py');
 define('MAIL_PASSWORD', 'Zek;azHw}OOp');
-define('MAIL_FROM', 'my@urbaview.net');
-define('APP_NAME', 'Sistema');
+define('MAIL_FROM', 'noreply@grupodelta.com.py');
+define('APP_NAME', 'Delta');
 define('CONTACT_URL', 'https://wa.me/+595983458839');
 define('FILE_MAX_SIZE', 20 * 1024 * 1024); // 20 mb
