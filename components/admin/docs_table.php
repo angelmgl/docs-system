@@ -31,7 +31,11 @@
         ?>
             <tr>
                 <td class="type_column"><?php echo $doc_type ?></td>
-                <td class="title-column"><?php echo $doc["name"] ?></td>
+                <td class="title-column">
+                    <a href="<?php echo $view_url; ?>" class="link" style="text-decoration: none;">
+                        <?php echo $doc["name"] ?>
+                    </a>
+                </td>
                 <td class="description-column">
                     <?php echo $doc["description"] ?>
                 </td>
