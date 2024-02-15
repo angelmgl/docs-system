@@ -31,6 +31,7 @@ if ($user && password_verify($password, $user['password'])) {
     if ($user['role'] === 'super') {
         // si el usuario es superadmin redirigimos al admin de la app
         set_session($user);
+        update_last_login($mydb, $user['id']);
         header("Location: " . BASE_URL . "/admin/dashboard");
         exit;
     } else if (in_array($user['role'], ['admin', 'analyst']) && !!$user['business_id']) {
@@ -44,6 +45,7 @@ if ($user && password_verify($password, $user['password'])) {
         if ($business && $business['is_active']) {
             // El negocio está activo. Continuar con el inicio de sesión.
             set_session($user);
+            update_last_login($mydb, $user['id']);
             header("Location: " . BASE_URL . "/business/dashboard");
             exit;
         } else {
@@ -58,8 +60,6 @@ if ($user && password_verify($password, $user['password'])) {
         header("Location: " . BASE_URL . "/login.php");
         exit;
     }
-
-    update_last_login($mydb, $user['id']);
 
     $stmt->close();
     $mydb->close();
